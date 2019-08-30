@@ -21,6 +21,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FinancesModule } from './pages/finances/finances.module';
 import { UsersComponent } from './pages/users/users.component';
 import { SuppliesComponent } from './pages/supplies/supplies.component';
+import { ModalUserComponent } from './components/modals/modal-user/modal-user.component';
 
 registerLocaleData(localesCo);
 
@@ -36,6 +37,7 @@ registerLocaleData(localesCo);
     SidebarComponent,
     SuppliesComponent,
     UsersComponent,
+    ModalUserComponent,
   ],
   imports: [
     AppRoutingModule,
