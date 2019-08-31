@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FinancesComponent } from './pages/finances/finances.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { SuppliesComponent } from './pages/supplies/supplies.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'recovery', component: RecoveryComponent }
 ];
 
 @NgModule({

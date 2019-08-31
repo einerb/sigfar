@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <p class="text-center mb-5">Proporcione el correo electrónico registrado en el sistema para poder
+                    recuperar el usuario. Después de enviar estos datos recibirá un correo con el nuevo usuario.</p>
+                <form>
+                    <div class="form-group">
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            <input type="text" class="form-control" name="correo" id="correo"
+                                placeholder="Correo electrónico" autofocus autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-success mt-5 mr-1">Recuperar</button>
+                        <a routerLink="/login" class="btn btn-outline-secondary mt-5 ml-1">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

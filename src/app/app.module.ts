@@ -21,6 +21,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SuppliesComponent } from './pages/supplies/supplies.component';
 import { UsersComponent } from './pages/users/users.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
 
 registerLocaleData(localesCo);
 
@@ -37,6 +38,7 @@ registerLocaleData(localesCo);
     SidebarComponent,
     SuppliesComponent,
     UsersComponent,
+    RecoveryComponent,
   ],
   imports: [
     AppRoutingModule,
