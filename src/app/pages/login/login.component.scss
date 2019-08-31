@@ -1,0 +1,17 @@
+.row {
+  background: #f2f8f9;
+}
+
+.imagen-fullscreen {
+  background: url(../../../assets/images/samples/altitude-clouds-daylight-1450082.jpg)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
+button {
+  width: 100%;
+}
