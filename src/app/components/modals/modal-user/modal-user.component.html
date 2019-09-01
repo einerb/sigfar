@@ -1,0 +1,86 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="newUserModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form #newUserForm="ngForm">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label class="col-form-label">Fecha: {{ hoy | date: 'MMMM d y, h:mm a' | titlecase }}</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nombres">Nombres <span class="asterisco">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="userDataCopy.name" name="name" id="nombres"
+                        placeholder="Ingrese el nombre" autocomplete="off">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="apellidos">Apellidos <span class="asterisco">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="userDataCopy.lastname" name="lastname"
+                        id="apellidos" placeholder="Ingrese los apellidos" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="genero">Género <span class="asterisco">*</span></label>
+                    <select class="form-control" id="genero" [(ngModel)]="userDataCopy.gender" name="gender">
+                        <option value="0">Seleccione el género</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Femenino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="contact">Nombre del contacto <span class="asterisco">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="userDataCopy.contact" name="contact"
+                        id="contact" placeholder="Ingrese el nombre del contacto" autocomplete="off">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telefono">Teléfono contacto <span class="asterisco">*</span></label>
+                    <input type="number" class="form-control" [(ngModel)]="userDataCopy.phone" name="phone"
+                        id="telefono" placeholder="Ingrese el número de teléfono" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="direccion">Dirección <span class="asterisco">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="userDataCopy.address" name="address"
+                        id="direccion" placeholder="Ingrese la dirección" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nacimiento">Fecha de nacimiento <span class="asterisco">*</span></label>
+                    <input type="date" class="form-control" [(ngModel)]="userDataCopy.birthday" name="birthday"
+                        id="nacimiento">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lugar">Lugar de nacimiento</label>
+                    <input type="text" class="form-control" [(ngModel)]="userDataCopy.birthplace" name="birthplace"
+                        id="lugar" placeholder="Ingrese el lugar de nacimiento" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="bautismo">Fecha de bautismo</label>
+                    <input type="date" class="form-control" [(ngModel)]="userDataCopy.baptism_date" name="baptism_date"
+                        id="bautismo">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lugar-bautismo">Lugar de bautismo</label>
+                    <input type="text" class="form-control" [(ngModel)]="userDataCopy.place_baptism"
+                        name="place_baptism" id="lugar-bautismo" placeholder="Ingrese el lugar de bautismo"
+                        autocomplete="off">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="onSave()">Guardar</button>
+    </div>
+</div>

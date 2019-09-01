@@ -3,17 +3,16 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ModalDiezmoComponent } from '../../components/modals/modal-diezmo/modal-diezmo.component';
 import { FinancesComponent } from './finances.component';
 
 @NgModule({
-  declarations: [ModalDiezmoComponent, FinancesComponent],
+  declarations: [FinancesComponent],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule
   ],
   exports: [FinancesComponent],
-  entryComponents: [ModalDiezmoComponent]
+  entryComponents: []
 })
 export class FinancesModule { }

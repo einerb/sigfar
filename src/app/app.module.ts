@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { UsersModule } from './pages/users/users.module';
 import { registerLocaleData, DecimalPipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
@@ -20,7 +21,6 @@ import { RootComponent } from 'src/root.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SuppliesComponent } from './pages/supplies/supplies.component';
-import { UsersComponent } from './pages/users/users.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 
 registerLocaleData(localesCo);
@@ -37,7 +37,6 @@ registerLocaleData(localesCo);
     SettingsComponent,
     SidebarComponent,
     SuppliesComponent,
-    UsersComponent,
     RecoveryComponent,
   ],
   imports: [
@@ -45,6 +44,7 @@ registerLocaleData(localesCo);
     BrowserModule,
     CommonModule,
     FinancesModule,
+    UsersModule,
     FormsModule,
     FormsModule,
     HttpClientModule,
