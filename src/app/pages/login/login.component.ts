@@ -12,4 +12,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  public onLogin() {
+
+  }
+
+  private onSuccess() {
+
+  }
+
+  private onFailure() {
+
+  }
 }
