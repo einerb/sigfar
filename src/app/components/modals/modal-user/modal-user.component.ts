@@ -1,30 +1,25 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { UserApi } from 'src/app/models/user.model';
+import { Component, OnInit, ViewChild, Input } from "@angular/core";
+import { HttpErrorResponse } from "@angular/common/http";
+import { NgForm } from "@angular/forms";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-modal-user',
-  templateUrl: './modal-user.component.html',
-  styleUrls: ['../styles-modal.scss']
+  selector: "app-modal-user",
+  templateUrl: "./modal-user.component.html",
+  styleUrls: ["../styles-modal.scss"]
 })
 export class ModalUserComponent implements OnInit {
-  @ViewChild('newUserForm', { static: false }) newUserForm: NgForm;
+  @ViewChild("newUserForm", { static: false }) newUserForm: NgForm;
   @Input() editMode: boolean;
-  @Input() userData: UserApi;
+  @Input() userData: any;
   @Input() title: string;
 
-  private userDataCopy: UserApi;
+  private userDataCopy: any;
   public hoy = new Date();
 
-  constructor(private newUserModal: NgbActiveModal) {
-  }
+  constructor(private newUserModal: NgbActiveModal) {}
 
-  ngOnInit() {
-    this.userDataCopy = new UserApi(this.editMode ? this.userData : null);
-  }
+  ngOnInit() {}
 
   public onSave = () => {
     this.newUserForm.ngSubmit.emit();
@@ -38,15 +33,16 @@ export class ModalUserComponent implements OnInit {
     } else {
       // TODO: Display Error in some way here
     }
-  }
+  };
 
   private onSuccess = () => {
     this.newUserModal.close();
-  }
+  };
 
   private onFailure = (res: HttpErrorResponse) => {
-    alert('Error: No se pudo completar la operación porque ocurrió un error interno!');
+    alert(
+      "Error: No se pudo completar la operación porque ocurrió un error interno!"
+    );
     console.log(res);
-  }
-
+  };
 }
