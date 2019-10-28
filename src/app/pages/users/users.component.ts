@@ -1,30 +1,91 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from "@angular/core";
+import { GridOptions } from "ag-grid-community";
 
-import { ModalUserComponent } from '../../components/modals/modal-user/modal-user.component';
+import { UserService } from "src/app/services";
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: "app-users",
+  templateUrl: "./users.component.html",
+  styleUrls: ["./users.component.scss"]
 })
 export class UsersComponent implements OnInit {
-  public editingMode: boolean;
+  public users = [];
+  public data: any;
+  public overlayLoadingTemplate;
+  public gridUser;
+  public id: any;
+  public showCreate = false;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private userService: UserService) {
+    this.gridUser = {} as GridOptions;
+    const self = this;
+
+    this.gridUser = {
+      columnDefs: [
+        {
+          headerName: "Nombre",
+          field: "name"
+        },
+        {
+          headerName: "Apellidos",
+          field: "lastname"
+        },
+        {
+          headerName: "Correo electrónico",
+          field: "email",
+          cellStyle: { textAlign: "center" }
+        },
+        {
+          headerName: "Rol",
+          field: "role_id",
+          cellStyle: { textAlign: "center" }
+        },
+        {
+          headerName: "Estado",
+          field: "status",
+          cellStyle: { textAlign: "center" }
+        }
+      ],
+      defaultColDef: {
+        sortable: true,
+        resizable: true
+      },
+      headerHeight: 50,
+      rowHeight: 35
+    };
+
+    this.overlayLoadingTemplate =
+      "<span class='ag-overlay-loading-center'>Por favor espere mientras cargan los datos</span>";
+
+    this.gridUser.onGridReady = () => {
+      self.gridUser.api.sizeColumnsToFit();
+      self.gridUser.api.showLoadingOverlay();
+    };
   }
 
   ngOnInit() {
+    this.allUsers();
   }
 
-  public addUser() {
-    this.editingMode = false;
-    this.openUserModal();
+  private allUsers() {
+    this.userService.getAll().subscribe(res => {
+      this.users = res.data;
+    });
   }
 
-  private openUserModal() {
-    const modalRef = this.modalService.open(ModalUserComponent, { backdrop: 'static', keyboard: false, size: 'lg' });
-    modalRef.componentInstance.editMode = this.editingMode;
-    modalRef.componentInstance.title = this.editingMode ? 'Editar usuario' : 'Crear usuario';
+  public closeCreate() {
+    this.showCreate = false;
+    this.allUsers();
+  }
+
+  public create() {
+    this.id = null;
+    this.showCreate = !this.showCreate;
+  }
+
+  public setSelected(row) {
+    this.id = row.data.id;
+    this.showCreate = true;
+    this.data = row.data;
   }
 }

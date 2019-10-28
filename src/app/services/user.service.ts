@@ -19,6 +19,14 @@ export class UserService {
     );
   }
 
+  public getRoles(): Observable<any> {
+    return this.globalService.get(Constant.Endpoints.ROLES.BASE).pipe(
+      map(res => {
+        return res;
+      })
+    );
+  }
+
   public getById(id: any) {
     return this.globalService.get(Constant.Endpoints.USER.BASE + "/" + id).pipe(
       map(res => {

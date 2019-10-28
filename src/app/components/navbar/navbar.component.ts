@@ -44,7 +44,6 @@ export class NavbarComponent implements OnInit {
         timeOut: 1000
       });
       this.router.navigateByUrl("/login");
-
     });
   }
 }

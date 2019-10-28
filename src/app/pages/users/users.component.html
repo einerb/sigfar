@@ -9,46 +9,46 @@
         </ol>
       </nav>
       <div>
-        <p>Registre y administre nuevos usuarios al sistema. Debe tener en cuenta que los tipos de roles válidos son <b
-            placement="top" ngbTooltip="Tiene el control de todo el sistema y sus funcionalidades.">Super Admin</b>, <b
+        <p>
+          Registre y administre nuevos usuarios al sistema. Debe tener en cuenta
+          que los tipos de roles válidos son
+          <b
             placement="top"
-            ngbTooltip="Tiene algunos permisos hasta poder crear otros usuario tipo Empleado y Cliente.">Jefe</b>,
-          <b placement="top" ngbTooltip="Solo tiene permitido gestionar los clientes y los insumos.">Empleado</b> y <b
-            placement="top" ngbTooltip="Solo podrá consultar y hacer pedidos en la plataforma.">Cliente</b>.
+            ngbTooltip="Solo tiene permitido gestionar los clientes y los insumos."
+            >Empleado</b
+          >
+          y
+          <b
+            placement="top"
+            ngbTooltip="Solo podrá consultar y hacer pedidos en la plataforma."
+            >Cliente</b
+          >.
         </p>
       </div>
 
       <div class="mt-5 mb-4">
-        <button class="btn btn-success" (click)="addUser()"><i class="mdi mdi-plus"></i> Agregar</button>
+        <button class="btn btn-success" (click)="create()">
+          <i class="mdi mdi-plus"></i> Agregar
+        </button>
       </div>
 
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr class="text-center">
-              <th>#</th>
-              <th>Nombres</th>
-              <th>Correo electrónico</th>
-              <th>Usuario</th>
-              <th>Rol</th>
-              <th>Creación</th>
-              <th colspan="3">Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Einer Bravo Cardenas</td>
-              <td>einerbravo@gmail.com</td>
-              <td>ebravo</td>
-              <td>Super Admin</td>
-              <td>22/09/2019</td>
-              <td><a href=""><i class="mdi mdi-eye text-primary"></i></a></td>
-              <td><a href=""><i class="mdi mdi-pencil text-warning"></i></a></td>
-              <td><a href=""><i class="mdi mdi-delete text-danger"></i></a></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row">
+        <div class="col-6">
+          <div class="table-responsive">
+            <ag-grid-angular
+              style="height: 55vh;"
+              class="ag-theme-bootstrap"
+              [rowData]="users"
+              [gridOptions]="gridUser"
+              [overlayLoadingTemplate]="overlayLoadingTemplate"
+              (cellClicked)="setSelected($event)"
+            >
+            </ag-grid-angular>
+          </div>
+        </div>
+        <div class="col-6" *ngIf="showCreate">
+            <app-user-crud [id]="id" (closeCreate)="closeCreate()"></app-user-crud>
+        </div>
       </div>
     </div>
   </div>

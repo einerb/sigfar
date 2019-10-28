@@ -1,0 +1,131 @@
+import Swal from "sweetalert2";
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  Output,
+  EventEmitter
+} from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+import { UserService } from "src/app/services";
+
+@Component({
+  selector: "app-user-crud",
+  templateUrl: "./user-crud.component.html",
+  styleUrls: ["./user-crud.component.scss"]
+})
+export class UserCrudComponent implements OnInit, OnChanges {
+  public form: FormGroup;
+  public loading = false;
+  public submitted = false;
+  public roles: [];
+  @Input() id: number;
+  @Output() closeCreate: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private userService: UserService
+  ) {
+    this.createForm();
+  }
+
+  ngOnInit() {
+    this.allRoles();
+  }
+
+  get f() {
+    return this.form.controls;
+  }
+
+  public close() {
+    this.closeCreate.emit();
+  }
+
+  public load() {
+    this.userService.getById(this.id).subscribe(
+      res => {
+        this.myPacthValue(res.data);
+      },
+      err => {
+        this.onFailure(err);
+      }
+    );
+  }
+
+  public myPacthValue(resp) {
+    this.loading = false;
+    this.form.patchValue(resp);
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes["id"].currentValue) {
+      this.loading = true;
+      this.load();
+    } else {
+      this.resetForm();
+    }
+  }
+
+  public onSave() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.userService.updateUser(this.form.value).subscribe(
+      () => {
+        this.onSuccess();
+        this.close();
+      },
+      err => {
+        this.onFailure(err);
+      }
+    );
+  }
+
+  public allRoles() {
+    this.userService.getRoles().subscribe(res => {
+      this.roles = res.data;
+    });
+  }
+
+  private createForm() {
+    this.form = this.fb.group({
+      id: [""],
+      name: ["", Validators.required],
+      lastname: ["", [Validators.required]],
+      email: ["", [Validators.required]],
+      password: ["12345"],
+      role: ["", [Validators.required]],
+      birthday: ["", [Validators.required]],
+      address: [""],
+      phone: [""],
+      status: [true, Validators.required]
+    });
+  }
+
+  private onSuccess() {
+    this.toastr.success("Operación exitosa..", "", {
+      timeOut: 1000
+    });
+  }
+
+  private onFailure(err) {
+    Swal.fire({
+      type: "error",
+      title: err.code,
+      text: err.error.errors
+    });
+  }
+
+  private resetForm() {
+    this.form.reset();
+    this.form.patchValue({
+      active: true
+    });
+  }
+}

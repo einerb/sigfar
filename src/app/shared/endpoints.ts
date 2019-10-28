@@ -4,7 +4,10 @@ export const Endpoint = {
   AUTH: {
     BASE: environment.api.base + "auth",
     LOGIN: environment.api.base + "auth/login",
-    LOGOUT: environment.api.base + "auth/logout",
+    LOGOUT: environment.api.base + "auth/logout"
+  },
+  ROLES: {
+    BASE: environment.api.base + "auth/roles"
   },
   PRODUCT: {
     BASE: environment.api.base + "auth/products"
@@ -18,7 +21,7 @@ export const Endpoint = {
   INVENTORY: {
     BASE: environment.api.base + "auth/inventories"
   },
-  USER:{
+  USER: {
     BASE: environment.api.base + "auth/users"
   }
 };
