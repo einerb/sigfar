@@ -39,11 +39,13 @@ export class NavbarComponent implements OnInit {
   }
 
   public logout() {
-    this.authService.logout().subscribe(() => {
+    this.authService.logout().subscribe(res => {
       this.toastr.info("Cerrando sesión..", "", {
         timeOut: 1000
       });
-      this.router.navigateByUrl("/login");
     });
+    setTimeout(() => {
+      this.router.navigate(["/login"]);
+    }, 1200);
   }
 }

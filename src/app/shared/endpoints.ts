@@ -2,26 +2,25 @@ import { environment } from "../../environments/environment";
 
 export const Endpoint = {
   AUTH: {
-    BASE: environment.api.base + "auth",
     LOGIN: environment.api.base + "auth/login",
-    LOGOUT: environment.api.base + "auth/logout"
+    LOGOUT: environment.api.base + "logout"
   },
   ROLES: {
-    BASE: environment.api.base + "auth/roles"
+    BASE: environment.api.base + "roles"
   },
   PRODUCT: {
-    BASE: environment.api.base + "auth/products"
+    BASE: environment.api.base + "products"
   },
   PERMISSION: {
-    BASE: environment.api.base + "auth/permissions"
+    BASE: environment.api.base + "permissions"
   },
   SCHEDULE: {
-    BASE: environment.api.base + "auth/schedules"
+    BASE: environment.api.base + "schedules"
   },
   INVENTORY: {
-    BASE: environment.api.base + "auth/inventories"
+    BASE: environment.api.base + "inventories"
   },
   USER: {
-    BASE: environment.api.base + "auth/users"
+    BASE: environment.api.base + "users"
   }
 };

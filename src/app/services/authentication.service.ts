@@ -50,9 +50,13 @@ export class AuthenticationService {
   /**
    * logout
    */
-  public logout(): Observable<any> {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    return this.globalService.get(Constant.Endpoints.AUTH.LOGOUT);
+  logout(): Observable<any> {
+    return this.globalService.get(Constant.Endpoints.AUTH.LOGOUT).pipe(
+      map(res => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        return res;
+      })
+    );
   }
 }

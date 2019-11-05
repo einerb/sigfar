@@ -7,7 +7,7 @@
             <img src="assets/images/faces/perfil.jpg" alt="profile image" />
           </div>
           <div class="text-wrapper mb-4">
-            <p class="profile-name"> {{ user.name }} {{ user.lastname }}</p>
+            <p class="profile-name">{{ user.name }} {{ user.lastname }}</p>
             <div>
               <small class="designation text-muted">Super Admin</small>
               <span class="status-indicator offline"></span>
@@ -22,23 +22,41 @@
         <span class="menu-title">Inicio</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
       <a class="nav-link" routerLink="/users" routerLinkActive="active">
         <i class="menu-icon mdi mdi-account-group"></i>
         <span class="menu-title">Usuarios</span>
       </a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link disabled"
-        routerLink="/supplies"
-        routerLinkActive="active"
-      >
+      <a class="nav-link" routerLink="/supplies" routerLinkActive="active">
         <i class="menu-icon mdi mdi-medical-bag"></i>
-        <span class="menu-title">Insumos</span>
+        <span class="menu-title">Medicamentos</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
+      <a class="nav-link" routerLink="/finances" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-calendar"></i>
+        <span class="menu-title">Horarios</span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
+      <a class="nav-link" routerLink="/finances" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-account-child"></i>
+        <span class="menu-title">Permisos</span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
+      <a
+        class="nav-link disabled"
+        routerLink="/finances"
+        routerLinkActive="active"
+      >
+        <i class="menu-icon mdi mdi-account-supervisor"></i>
+        <span class="menu-title">Proveedores</span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="user.role_id == 1">
       <a
         class="nav-link disabled"
         routerLink="/finances"
@@ -48,7 +66,7 @@
         <span class="menu-title">Inventario</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="user.role_id == 1">
       <a
         class="nav-link disabled"
         routerLink="/reports"
