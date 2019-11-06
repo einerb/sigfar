@@ -26,11 +26,13 @@ export class UsersComponent implements OnInit {
       columnDefs: [
         {
           headerName: "Nombre",
-          field: "name"
+          field: "name",
+          cellStyle: { textAlign: "center" }
         },
         {
           headerName: "Apellidos",
-          field: "lastname"
+          field: "lastname",
+          cellStyle: { textAlign: "center" }
         },
         {
           headerName: "Correo electrónico",

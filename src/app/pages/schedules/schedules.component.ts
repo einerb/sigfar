@@ -1,48 +1,46 @@
 import { Component, OnInit } from "@angular/core";
 import { GridOptions } from "ag-grid-community";
 
-import { Constant } from "../../shared/constants";
-import { ProductService } from "src/app/services/product.service";
 import { StatusComponent } from "src/app/components/status/status.component";
+import { ScheduleService } from "../../services/schedule.service";
 
 @Component({
-  selector: "app-products",
-  templateUrl: "./products.component.html",
-  styleUrls: ["./products.component.scss"]
+  selector: "app-schedules",
+  templateUrl: "./schedules.component.html",
+  styleUrls: ["./schedules.component.scss"]
 })
-export class ProductsComponent implements OnInit {
-  public products = [];
-  public productsInventary = [];
+export class SchedulesComponent implements OnInit {
+  public schedules = [];
   public user;
   public data: any;
   public overlayLoadingTemplate;
-  public gridProduct;
+  public gridSchedule;
   public id: any;
   public showCreate = false;
 
-  constructor(private productService: ProductService) {
-    this.gridProduct = {} as GridOptions;
+  constructor(private scheduleService: ScheduleService) {
+    this.gridSchedule = {} as GridOptions;
     const self = this;
 
-    this.gridProduct = {
+    this.gridSchedule = {
       columnDefs: [
         {
-          headerName: "Nombre",
-          field: "name",
+          headerName: "Usuario",
+          valueGetter: function(params) {
+            return (
+              params.data.user[0].name + " " + params.data.user[0].lastname
+            );
+          },
           cellStyle: { textAlign: "center" }
         },
         {
-          headerName: "Descripción",
-          field: "description"
-        },
-        {
-          headerName: "Expedición",
-          field: "date_dispatch",
+          headerName: "Fecha inicio",
+          field: "date_start",
           cellStyle: { textAlign: "center" }
         },
         {
-          headerName: "Vencimiento",
-          field: "expiration_date",
+          headerName: "Fecha final",
+          field: "date_start",
           cellStyle: { textAlign: "center" }
         },
         {
@@ -63,17 +61,14 @@ export class ProductsComponent implements OnInit {
     this.overlayLoadingTemplate =
       "<span class='ag-overlay-loading-center'>Por favor espere mientras cargan los datos</span>";
 
-    this.gridProduct.onGridReady = () => {
-      self.gridProduct.api.sizeColumnsToFit();
-      self.gridProduct.api.showLoadingOverlay();
+    this.gridSchedule.onGridReady = () => {
+      self.gridSchedule.api.sizeColumnsToFit();
+      self.gridSchedule.api.showLoadingOverlay();
     };
   }
 
   ngOnInit() {
-    this.user = Constant.AUTH.getUser();
-
-    this.allProducts();
-    this.allProductInventary();
+    this.allSchedules();
   }
 
   public setSelected(row) {
@@ -82,21 +77,17 @@ export class ProductsComponent implements OnInit {
     this.data = row.data;
   }
 
-  private allProducts() {
-    this.productService.getAll().subscribe(res => {
-      this.products = res.data;
-    });
-  }
+  private allSchedules() {
+    this.scheduleService.getAll().subscribe(res => {
+      this.schedules = res.data;
 
-  private allProductInventary() {
-    this.productService.getAllInventary().subscribe(res => {
-      this.productsInventary = res.data;
+      console.log(this.schedules);
     });
   }
 
   public closeCreate() {
     this.showCreate = false;
-    this.allProducts();
+    this.allSchedules();
   }
 
   public create() {

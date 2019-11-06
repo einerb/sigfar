@@ -37,13 +37,13 @@
       </a>
     </li>
     <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
-      <a class="nav-link" routerLink="/finances" routerLinkActive="active">
+      <a class="nav-link" routerLink="/schedules" routerLinkActive="active">
         <i class="menu-icon mdi mdi-calendar"></i>
         <span class="menu-title">Horarios</span>
       </a>
     </li>
     <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
-      <a class="nav-link" routerLink="/finances" routerLinkActive="active">
+      <a class="nav-link" routerLink="/permissions" routerLinkActive="active">
         <i class="menu-icon mdi mdi-account-child"></i>
         <span class="menu-title">Permisos</span>
       </a>
@@ -51,7 +51,7 @@
     <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
       <a
         class="nav-link disabled"
-        routerLink="/finances"
+        routerLink="/suppliers"
         routerLinkActive="active"
       >
         <i class="menu-icon mdi mdi-account-supervisor"></i>
@@ -61,7 +61,7 @@
     <li class="nav-item" *ngIf="user.role_id == 1">
       <a
         class="nav-link disabled"
-        routerLink="/finances"
+        routerLink="/inventory"
         routerLinkActive="active"
       >
         <i class="menu-icon mdi mdi-database"></i>
