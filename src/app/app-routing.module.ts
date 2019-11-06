@@ -10,7 +10,7 @@ import { RecoveryComponent } from "./pages/recovery/recovery.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { ReportsComponent } from "./pages/reports/reports.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
-import { SuppliesComponent } from "./pages/supplies/supplies.component";
+import { ProductsComponent } from "./pages/products/products.component";
 import { UsersComponent } from "./pages/users/users.component";
 
 const routes: Routes = [
@@ -46,8 +46,8 @@ const routes: Routes = [
       },
       { path: "users", component: UsersComponent, canActivate: [AuthGuard] },
       {
-        path: "supplies",
-        component: SuppliesComponent,
+        path: "products",
+        component: ProductsComponent,
         canActivate: [AuthGuard]
       }
     ]

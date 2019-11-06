@@ -25,12 +25,13 @@ import { ReportsComponent } from "./pages/reports/reports.component";
 import { RootComponent } from "src/root.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
-import { SuppliesComponent } from "./pages/supplies/supplies.component";
+import { ProductsComponent } from "./pages/products/products.component";
 import { UsersComponent } from "./pages/users/users.component";
 import { UserCrudComponent } from "./pages/users/user-crud/user-crud.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { StatusComponent } from "./components/status/status.component";
-import { RolesComponent } from './components/roles/roles.component';
+import { RolesComponent } from "./components/roles/roles.component";
+import { ProductCrudComponent } from './pages/products/product-crud/product-crud.component';
 
 registerLocaleData(localesCo);
 
@@ -48,10 +49,11 @@ registerLocaleData(localesCo);
     SettingsComponent,
     SidebarComponent,
     StatusComponent,
-    SuppliesComponent,
+    ProductsComponent,
     UserCrudComponent,
     UsersComponent,
     RolesComponent,
+    ProductCrudComponent
   ],
   imports: [
     AppRoutingModule,

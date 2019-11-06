@@ -9,8 +9,10 @@
           <div class="text-wrapper mb-4">
             <p class="profile-name">{{ user.name }} {{ user.lastname }}</p>
             <div>
-              <small class="designation text-muted">Super Admin</small>
-              <span class="status-indicator offline"></span>
+              <small class="designation text-muted" *ngIf="user.role_id == 1">Super Admin</small>
+              <small class="designation text-muted" *ngIf="user.role_id == 2">Empleado</small>
+              <small class="designation text-muted" *ngIf="user.role_id == 3">Cliente</small>
+              <span class="status-indicator online"></span>
             </div>
           </div>
         </div>
@@ -29,9 +31,9 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/supplies" routerLinkActive="active">
+      <a class="nav-link" routerLink="/products" routerLinkActive="active">
         <i class="menu-icon mdi mdi-medical-bag"></i>
-        <span class="menu-title">Medicamentos</span>
+        <span class="menu-title">Productos</span>
       </a>
     </li>
     <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
