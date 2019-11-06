@@ -7,7 +7,10 @@
       <div class="col-md-10" style="margin-top: 15%;">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title text-center mb-5">Iniciar sesión</h5>
+            <h5 class="card-title text-center mb-2">Iniciar sesión</h5>
+            <p class="text-center mb-5">
+              Digite a continuación sus credenciales de acceso
+            </p>
             <form
               [formGroup]="form"
               (ngSubmit)="onLoginEmailPassword()"
@@ -97,15 +100,28 @@
                 </button>
               </div>
             </form>
-            <div class="mt-3 text-right">
+            <!-- <div class="mt-3 text-right">
               <a routerLink="/recovery">Recuperar usuario o contraseña</a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
     <div class="row justify-content-center mt-5">
-      <a routerLink="/register">Registarme como cliente <i class="mdi mdi-open-in-new"></i></a>
+      <a routerLink="/register"
+        >Registarme como cliente <i class="mdi mdi-open-in-new"></i
+      ></a>
     </div>
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center">
+        <span
+          class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+          >Copyright © {{ hoy | date: "yyyy" }}
+          <a href="https://www.devteam.com.co/" target="_blank"
+            >Dev Team Technology S.A.S</a
+          >. All rights reserved.</span
+        >
+      </div>
+    </footer>
   </div>
 </div>

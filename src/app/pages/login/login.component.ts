@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   public passMinLegth = 5;
   public submitted = false;
   public user;
+  hoy = new Date();
 
   constructor(
     private formBuilder: FormBuilder,
