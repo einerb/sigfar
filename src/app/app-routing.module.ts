@@ -2,15 +2,16 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./app.component";
+import { AuthGuard } from "./services/guards/auth.guard";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { FinancesComponent } from "./pages/finances/finances.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { RecoveryComponent } from "./pages/recovery/recovery.component";
+import { RegisterComponent } from "./pages/register/register.component";
 import { ReportsComponent } from "./pages/reports/reports.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { SuppliesComponent } from "./pages/supplies/supplies.component";
 import { UsersComponent } from "./pages/users/users.component";
-import { AuthGuard } from "./services/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -52,7 +53,8 @@ const routes: Routes = [
     ]
   },
   { path: "login", component: LoginComponent },
-  { path: "recovery", component: RecoveryComponent }
+  { path: "recovery", component: RecoveryComponent },
+  { path: "register", component: RegisterComponent }
 ];
 
 @NgModule({

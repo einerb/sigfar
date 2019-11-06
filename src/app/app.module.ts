@@ -1,5 +1,7 @@
 import localesCo from "@angular/common/locales/es-CO";
+import { AgGridModule } from "ag-grid-angular";
 import { AppRoutingModule } from "./app-routing.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from "@angular/common";
 import { FinancesModule } from "./pages/finances/finances.module";
@@ -8,9 +10,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule, LOCALE_ID } from "@angular/core";
 import { NgbModule, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
-import { registerLocaleData, DecimalPipe } from "@angular/common";
 import { ToastrModule } from "ngx-toastr";
-import { AgGridModule } from "ag-grid-angular";
+import { registerLocaleData, DecimalPipe } from "@angular/common";
 
 import { AppComponent } from "./app.component";
 import { AuthGuard } from "./services/guards/auth.guard";
@@ -27,6 +28,7 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { SuppliesComponent } from "./pages/supplies/supplies.component";
 import { UsersComponent } from "./pages/users/users.component";
 import { UserCrudComponent } from "./pages/users/user-crud/user-crud.component";
+import { RegisterComponent } from './pages/register/register.component';
 
 registerLocaleData(localesCo);
 
@@ -44,11 +46,13 @@ registerLocaleData(localesCo);
     SidebarComponent,
     SuppliesComponent,
     UsersComponent,
-    UserCrudComponent
+    UserCrudComponent,
+    RegisterComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     FinancesModule,
     FormsModule,

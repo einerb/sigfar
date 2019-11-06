@@ -1,0 +1,189 @@
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex justify-content-center">
+      <div class="col-5" style="margin: 8% 0;">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title text-center mb-5">
+              Registrarme como cliente
+            </h3>
+            <form [formGroup]="form" (ngSubmit)="onRegister()" class="mb-5">
+              <div class="form-group">
+                <label class="sr-only" for="inlineFormInputGroup"
+                  >Nombres</label
+                >
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="mdi mdi mdi-account"></i>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    formControlName="name"
+                    class="form-control"
+                    placeholder="Digite nombres"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="inlineFormInputGroup"
+                  >Apellidos</label
+                >
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="mdi mdi mdi-account"></i>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    formControlName="lastname"
+                    class="form-control"
+                    placeholder="Digite apellidos"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="inlineFormInputGroup"
+                  >Correo electrónico</label
+                >
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="mdi mdi mdi-account-circle"></i>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    formControlName="email"
+                    class="form-control"
+                    placeholder="Digite correo electrónico"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                    [email]="true"
+                  />
+                  <span
+                    *ngIf="submitted && f.email.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.email.invalid" class="alert alert-danger">
+                      El correo electrónico es inválido. Por ejemplo
+                      <span class="font-weight-bold">email@mail.com</span>
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="inlineFormInputGroup"
+                  >Contraseña</label
+                >
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="mdi mdi mdi-lock"></i>
+                    </div>
+                  </div>
+                  <input
+                    type="password"
+                    formControlName="password"
+                    class="form-control"
+                    placeholder="Digite contraseña"
+                    [ngClass]="{
+                      'is-invalid': submitted && f.password.errors
+                    }"
+                    minlength="5"
+                  />
+                  <div
+                    *ngIf="submitted && f.password.errors"
+                    class="invalid-feedback"
+                  >
+                    <div
+                      *ngIf="f.password.errors.required"
+                      class="alert alert-danger"
+                    >
+                      Contraseña requerida
+                    </div>
+                    <div
+                      *ngIf="f.password.errors.minlength"
+                      class="alert alert-danger"
+                    >
+                      Contraseña muy corta.
+                      <span class="font-weight-bold">Min 5 caracteres</span>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="inlineFormInputGroup"
+                  >Teléfono</label
+                >
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="mdi mdi mdi-phone"></i>
+                    </div>
+                  </div>
+                  <input
+                    type="number"
+                    formControlName="phone"
+                    class="form-control"
+                    placeholder="Digite número de teléfono"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="inlineFormInputGroup"
+                  >Dirección</label
+                >
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="mdi mdi mdi-map-marker"></i>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    formControlName="address"
+                    class="form-control"
+                    placeholder="Digite dirección"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <div class="text-center">
+                <button
+                  type="submit"
+                  [disabled]="loading"
+                  class="btn btn-success mr-2"
+                >
+                  Registrarme
+                  <img
+                    *ngIf="loading"
+                    src="../../../assets/images/loading.svg"
+                  />
+                </button>
+                <a routerLink="/login" class="btn btn-secondary ml-2"
+                  >Cancelar</a
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center">
+        <span
+          class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+          >Copyright © {{ hoy | date: "yyyy" }}
+          <a href="https://www.devteam.com.co/" target="_blank"
+            >Dev Team Technology S.A.S</a
+          >. All rights reserved.</span
+        >
+      </div>
+    </footer>
+  </div>
+</div>
