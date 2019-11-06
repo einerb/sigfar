@@ -10,6 +10,7 @@ import {
 } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
+
 import { UserService } from "src/app/services";
 
 @Component({
@@ -21,7 +22,7 @@ export class UserCrudComponent implements OnInit, OnChanges {
   public form: FormGroup;
   public loading = false;
   public submitted = false;
-  public roles: [];
+  public roles: any;
   @Input() id: number;
   @Output() closeCreate: EventEmitter<any> = new EventEmitter<any>();
 
@@ -47,7 +48,7 @@ export class UserCrudComponent implements OnInit, OnChanges {
 
   public load() {
     this.userService.getById(this.id).subscribe(
-      res => {
+      (res: any) => {
         this.myPacthValue(res.data);
       },
       err => {
@@ -59,6 +60,8 @@ export class UserCrudComponent implements OnInit, OnChanges {
   public myPacthValue(resp) {
     this.loading = false;
     this.form.patchValue(resp);
+    const role = this.roles.find(r => r.id === resp.role_id);
+    this.form.get("role").setValue(role);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -72,19 +75,16 @@ export class UserCrudComponent implements OnInit, OnChanges {
 
   public onSave() {
     this.submitted = true;
+
     if (this.form.invalid) {
       return;
     }
 
-    this.userService.updateUser(this.form.value).subscribe(
-      () => {
-        this.onSuccess();
-        this.close();
-      },
-      err => {
-        this.onFailure(err);
-      }
-    );
+    if (this.id) {
+      this.updateUser();
+    } else {
+      this.createUser();
+    }
   }
 
   public allRoles() {
@@ -101,11 +101,35 @@ export class UserCrudComponent implements OnInit, OnChanges {
       email: ["", [Validators.required]],
       password: ["12345"],
       role: ["", [Validators.required]],
-      birthday: ["", [Validators.required]],
+      birthdate: ["", [Validators.required]],
       address: [""],
       phone: [""],
       status: [true, Validators.required]
     });
+  }
+
+  private createUser() {
+    this.userService.createUser(this.form.value).subscribe(
+      () => {
+        this.onSuccess();
+        this.close();
+      },
+      err => {
+        this.onFailure(err);
+      }
+    );
+  }
+
+  private updateUser() {
+    this.userService.updateUser(this.form.value).subscribe(
+      () => {
+        this.onSuccess();
+        this.close();
+      },
+      err => {
+        this.onFailure(err);
+      }
+    );
   }
 
   private onSuccess() {

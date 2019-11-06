@@ -28,7 +28,9 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { SuppliesComponent } from "./pages/supplies/supplies.component";
 import { UsersComponent } from "./pages/users/users.component";
 import { UserCrudComponent } from "./pages/users/user-crud/user-crud.component";
-import { RegisterComponent } from './pages/register/register.component';
+import { RegisterComponent } from "./pages/register/register.component";
+import { StatusComponent } from "./components/status/status.component";
+import { RolesComponent } from './components/roles/roles.component';
 
 registerLocaleData(localesCo);
 
@@ -40,26 +42,28 @@ registerLocaleData(localesCo);
     LoginComponent,
     NavbarComponent,
     RecoveryComponent,
+    RegisterComponent,
     ReportsComponent,
     RootComponent,
     SettingsComponent,
     SidebarComponent,
+    StatusComponent,
     SuppliesComponent,
-    UsersComponent,
     UserCrudComponent,
-    RegisterComponent
+    UsersComponent,
+    RolesComponent,
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule,
     BrowserAnimationsModule,
+    BrowserModule,
     CommonModule,
     FinancesModule,
     FormsModule,
     HttpClientModule,
     HttpClientModule,
-    NgbModule,
     HttpClientModule,
+    NgbModule,
     ReactiveFormsModule,
     RouterModule,
     AgGridModule.withComponents([]),
@@ -77,6 +81,7 @@ registerLocaleData(localesCo);
     DecimalPipe,
     NgbActiveModal
   ],
-  bootstrap: [RootComponent]
+  bootstrap: [RootComponent],
+  entryComponents: [StatusComponent, RolesComponent]
 })
 export class AppModule {}

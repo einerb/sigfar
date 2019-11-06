@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { GridOptions } from "ag-grid-community";
 
+import { RolesComponent } from "src/app/components/roles/roles.component";
+import { StatusComponent } from "../../components/status/status.component";
 import { UserService } from "src/app/services";
 
 @Component({
@@ -38,11 +40,13 @@ export class UsersComponent implements OnInit {
         {
           headerName: "Rol",
           field: "role_id",
+          cellRendererFramework: RolesComponent,
           cellStyle: { textAlign: "center" }
         },
         {
           headerName: "Estado",
           field: "status",
+          cellRendererFramework: StatusComponent,
           cellStyle: { textAlign: "center" }
         }
       ],

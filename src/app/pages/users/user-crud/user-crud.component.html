@@ -28,17 +28,17 @@
           class="form-control"
           formControlName="lastname"
           autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+          [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
         />
-        <span *ngIf="submitted && f.name.errors" class="invalid-feedback">
-          <div *ngIf="f.name.invalid" class="alert alert-danger">
+        <span *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+          <div *ngIf="f.lastname.invalid" class="alert alert-danger">
             Los apellidos del usuario son requerido
           </div>
         </span>
       </div>
       <div class="form-group">
         <label>Rol del usuario</label>
-        <select class="form-control">
+        <select class="form-control" formControlName="role">
           <option *ngFor="let rol of roles" value="{{ rol.id }}">{{
             rol.description
           }}</option>
@@ -51,11 +51,11 @@
           class="form-control"
           formControlName="email"
           autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
         />
-        <span *ngIf="submitted && f.name.errors" class="invalid-feedback">
-          <div *ngIf="f.name.invalid" class="alert alert-danger">
-            Los apellidos del usuario son requerido
+        <span *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.invalid" class="alert alert-danger">
+            El correo es requerido
           </div>
         </span>
       </div>
@@ -64,12 +64,12 @@
         <input
           type="date"
           class="form-control"
-          formControlName="birthday"
+          formControlName="birthdate"
           autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+          [ngClass]="{ 'is-invalid': submitted && f.birthdate.errors }"
         />
-        <span *ngIf="submitted && f.name.errors" class="invalid-feedback">
-          <div *ngIf="f.name.invalid" class="alert alert-danger">
+        <span *ngIf="submitted && f.birthdate.errors" class="invalid-feedback">
+          <div *ngIf="f.birthdate.invalid" class="alert alert-danger">
             La fecha de cumpleaños es requerido
           </div>
         </span>
