@@ -8,32 +8,30 @@
           <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
         </ol>
       </nav>
-      <div>
-        <p>
-          Registre y administre nuevos usuarios al sistema. Debe tener en cuenta
-          que los tipos de roles válidos son
-          <b
-            placement="top"
-            ngbTooltip="Solo tiene permitido gestionar los clientes y los insumos."
-            >Empleado</b
-          >
-          y
-          <b
-            placement="top"
-            ngbTooltip="Solo podrá consultar y hacer pedidos en la plataforma."
-            >Cliente</b
-          >.
-        </p>
-      </div>
-
-      <div class="mt-5 mb-4">
-        <button class="btn btn-success" (click)="create()">
-          <i class="mdi mdi-plus"></i> Agregar
-        </button>
-      </div>
-
       <div class="row">
-        <div class="col-6">
+        <div class="col-6" style="border-right: 1px dotted gray;">
+          <div>
+            <p>
+              Registre y administre nuevos usuarios al sistema. Debe tener en
+              cuenta que los tipos de roles válidos son
+              <b
+                placement="top"
+                ngbTooltip="Solo tiene permitido gestionar los clientes y los insumos."
+                >Empleado</b
+              >
+              y
+              <b
+                placement="top"
+                ngbTooltip="Solo podrá consultar y hacer pedidos en la plataforma."
+                >Cliente</b
+              >.
+            </p>
+          </div>
+          <div class="mt-5 mb-4">
+            <button class="btn btn-success" (click)="create()">
+              <i class="mdi mdi-plus"></i> Agregar
+            </button>
+          </div>
           <div class="table-responsive">
             <ag-grid-angular
               style="height: 55vh;"
@@ -46,8 +44,15 @@
             </ag-grid-angular>
           </div>
         </div>
-        <div class="col-6" *ngIf="showCreate">
-            <app-user-crud [id]="id" (closeCreate)="closeCreate()"></app-user-crud>
+        <div class="col-6">
+          <h1 class="text-muted mt-5 text-center" *ngIf="!showCreate">
+           <i class="mdi mdi-arrow-left"></i> Clic para ver más
+          </h1>
+          <app-user-crud
+            [id]="id"
+            (closeCreate)="closeCreate()"
+            *ngIf="showCreate"
+          ></app-user-crud>
         </div>
       </div>
     </div>
