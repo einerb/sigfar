@@ -34,6 +34,10 @@ export class SchedulesComponent implements OnInit {
           cellStyle: { textAlign: "center" }
         },
         {
+          headerName: "Descripción",
+          field: "description"
+        },
+        {
           headerName: "Fecha inicio",
           field: "date_start",
           cellStyle: { textAlign: "center" }
@@ -80,8 +84,6 @@ export class SchedulesComponent implements OnInit {
   private allSchedules() {
     this.scheduleService.getAll().subscribe(res => {
       this.schedules = res.data;
-
-      console.log(this.schedules);
     });
   }
 

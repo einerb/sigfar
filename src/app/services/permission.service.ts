@@ -8,11 +8,11 @@ import { GlobalService } from "src/app/services/global.service";
 @Injectable({
   providedIn: "root"
 })
-export class ScheduleService {
+export class PermissionService {
   constructor(private globalService: GlobalService) {}
 
   public getAll(): Observable<any> {
-    return this.globalService.get(Constant.Endpoints.SCHEDULE.BASE).pipe(
+    return this.globalService.get(Constant.Endpoints.PERMISSION.BASE).pipe(
       map(res => {
         return res;
       })
@@ -21,7 +21,7 @@ export class ScheduleService {
 
   public getById(id: any) {
     return this.globalService
-      .get(Constant.Endpoints.SCHEDULE.BASE + "/" + id)
+      .get(Constant.Endpoints.PERMISSION.BASE + "/" + id)
       .pipe(
         map(res => {
           return res;
@@ -29,17 +29,17 @@ export class ScheduleService {
       );
   }
 
-  public createSchedule(data: any) {
-    return this.globalService.post(Constant.Endpoints.SCHEDULE.BASE, data).pipe(
+  public createPermissiom(data: any) {
+    return this.globalService.post(Constant.Endpoints.PERMISSION.BASE, data).pipe(
       map(res => {
         return res;
       })
     );
   }
 
-  public updateSchedule(data: any) {
+  public updatePermissiom(data: any) {
     return this.globalService
-      .put(Constant.Endpoints.SCHEDULE.BASE + "/" + data.id, data)
+      .put(Constant.Endpoints.PERMISSION.BASE + "/" + data.id, data)
       .pipe(
         map(res => {
           return res;
