@@ -3,6 +3,7 @@ import { GridOptions } from "ag-grid-community";
 
 import { StatusComponent } from "src/app/components/status/status.component";
 import { PermissionService } from "../../services/permission.service";
+import { Constant } from "../../shared/constants";
 
 @Component({
   selector: "app-permissions",
@@ -26,7 +27,11 @@ export class PermissionsComponent implements OnInit {
       columnDefs: [
         {
           headerName: "Tipo",
-          field: "type",
+          field: "type"
+        },
+        {
+          headerName: "Descripción",
+          field: "description"
         },
         {
           headerName: "Usuario",
@@ -72,6 +77,8 @@ export class PermissionsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = Constant.AUTH.getUser();
+
     this.allPermissions();
   }
 

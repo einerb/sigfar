@@ -3,6 +3,7 @@ import { GridOptions } from "ag-grid-community";
 
 import { StatusComponent } from "src/app/components/status/status.component";
 import { ScheduleService } from "../../services/schedule.service";
+import { Constant } from "../../shared/constants";
 
 @Component({
   selector: "app-schedules",
@@ -48,6 +49,16 @@ export class SchedulesComponent implements OnInit {
           cellStyle: { textAlign: "center" }
         },
         {
+          headerName: "Tiempo inicio",
+          field: "time_start",
+          cellStyle: { textAlign: "center" }
+        },
+        {
+          headerName: "Tiempo final",
+          field: "time_end",
+          cellStyle: { textAlign: "center" }
+        },
+        {
           headerName: "Estado",
           field: "status",
           cellRendererFramework: StatusComponent,
@@ -72,6 +83,8 @@ export class SchedulesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = Constant.AUTH.getUser();
+
     this.allSchedules();
   }
 

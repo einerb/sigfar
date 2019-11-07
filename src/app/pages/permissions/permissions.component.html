@@ -15,6 +15,15 @@
               Gestión de permisos de usuarios.
             </p>
           </div>
+          <div class="mt-5 mb-4">
+            <button
+              class="btn btn-success"
+              (click)="create()"
+              *ngIf="user.role_id == 2"
+            >
+              <i class="mdi mdi-plus"></i> Solicitar
+            </button>
+          </div>
           <div class="table-responsive">
             <ag-grid-angular
               style="height: 55vh;"
@@ -22,7 +31,17 @@
               [rowData]="permissions"
               [gridOptions]="gridPermission"
               [overlayLoadingTemplate]="overlayLoadingTemplate"
+              *ngIf="user.role_id == 2"
+            >
+            </ag-grid-angular>
+            <ag-grid-angular
+              style="height: 55vh;"
+              class="ag-theme-bootstrap"
+              [rowData]="permissions"
+              [gridOptions]="gridPermission"
+              [overlayLoadingTemplate]="overlayLoadingTemplate"
               (cellClicked)="setSelected($event)"
+              *ngIf="user.role_id == 1"
             >
             </ag-grid-angular>
           </div>
@@ -31,11 +50,11 @@
           <h1 class="text-muted mt-5 text-center" *ngIf="!showCreate">
             <i class="mdi mdi-arrow-left"></i> Clic para ver más
           </h1>
-          <app-product-crud
+          <app-permission-crud
             [id]="id"
             (closeCreate)="closeCreate()"
             *ngIf="showCreate"
-          ></app-product-crud>
+          ></app-permission-crud>
         </div>
       </div>
     </div>

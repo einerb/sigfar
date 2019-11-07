@@ -19,6 +19,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { InterceptRequestsService } from "./services/intercepts/intercept-requests.service";
 import { LoginComponent } from "./pages/login/login.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
+import { PermissionCrudComponent } from "./pages/permissions/permission-crud/permission-crud.component";
 import { PermissionsComponent } from "./pages/permissions/permissions.component";
 import { ProductCrudComponent } from "./pages/products/product-crud/product-crud.component";
 import { ProductsComponent } from "./pages/products/products.component";
@@ -27,6 +28,7 @@ import { RegisterComponent } from "./pages/register/register.component";
 import { ReportsComponent } from "./pages/reports/reports.component";
 import { RolesComponent } from "./components/roles/roles.component";
 import { RootComponent } from "src/root.component";
+import { ScheduleCrudComponent } from "./pages/schedules/schedule-crud/schedule-crud.component";
 import { SchedulesComponent } from "./pages/schedules/schedules.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
@@ -57,6 +59,8 @@ registerLocaleData(localesCo);
     StatusComponent,
     UserCrudComponent,
     UsersComponent,
+    ScheduleCrudComponent,
+    PermissionCrudComponent
   ],
   imports: [
     AppRoutingModule,
