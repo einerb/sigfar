@@ -1,1 +1,190 @@
-<p>product-crud works!</p>
+<div class="row">
+  <div class="div" *ngIf="loading">
+    <div class="opacity"></div>
+    <img src="../../../../assets/images/loading3.gif" class="loading" />
+  </div>
+  <div class="col-12">
+    <h3 class="text-muted">Datos del producto</h3>
+    <form [formGroup]="form" (ngSubmit)="onSave()" novalidate>
+      <div class="form-group">
+        <label>Nombre del producto</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+        />
+        <span *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.invalid" class="alert alert-danger">
+            El nombre del producto es requerido
+          </div>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Descripción</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="description"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+        />
+        <span
+          *ngIf="submitted && f.description.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.description.invalid" class="alert alert-danger">
+            La descripción del producto es requerido
+          </div>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Registro sanitario</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="health_registration"
+          autocomplete="off"
+          [ngClass]="{
+            'is-invalid': submitted && f.health_registration.errors
+          }"
+        />
+        <span
+          *ngIf="submitted && f.health_registration.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.health_registration.invalid" class="alert alert-danger">
+            El registro sanitario es requerido
+          </div>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Fecha de expedición</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="date_dispatch"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.date_dispatch.errors }"
+        />
+        <span
+          *ngIf="submitted && f.date_dispatch.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.date_dispatch.invalid" class="alert alert-danger">
+            La fecha de expedición es requerida
+          </div>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Fecha de expiración</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="expiration_date"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.expiration_date.errors }"
+        />
+        <span
+          *ngIf="submitted && f.expiration_date.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.expiration_date.invalid" class="alert alert-danger">
+            La fecha de expiración es requerida
+          </div>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Unidad</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="unity"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.unity.errors }"
+        />
+        <span *ngIf="submitted && f.unity.errors" class="invalid-feedback">
+          <div *ngIf="f.unity.invalid" class="alert alert-danger">
+            La unidad es requerida
+          </div>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Vía administración</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="via_administration"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.via_administration.errors }"
+        />
+        <span
+          *ngIf="submitted && f.via_administration.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.via_administration.invalid" class="alert alert-danger">
+            La vía de administración es requerida
+          </div>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Concentración</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="concentration"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.concentration.errors }"
+        />
+        <span
+          *ngIf="submitted && f.concentration.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.concentration.invalid" class="alert alert-danger">
+            La concentración es requerida
+          </div>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Forma farmacéutica</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="pharmaceutical_form"
+          autocomplete="off"
+          [ngClass]="{
+            'is-invalid': submitted && f.pharmaceutical_form.errors
+          }"
+        />
+        <span
+          *ngIf="submitted && f.pharmaceutical_form.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.pharmaceutical_form.invalid" class="alert alert-danger">
+            La forma farmacéutica es requerida
+          </div>
+        </span>
+      </div>
+      <div class="form-group" *ngIf="visible">
+        Estado:
+        <mat-slide-toggle
+          class="ml-5"
+          formControlName="status"
+        ></mat-slide-toggle>
+      </div>
+      <div class="mt-5 d-flex justify-content-center">
+        <button type="submit" class="btn btn-success mr-1">
+          Guardar
+        </button>
+        <button
+          class="btn btn-secondary ml-1"
+          style="color: #000"
+          (click)="close()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
