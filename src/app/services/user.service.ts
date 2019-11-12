@@ -43,6 +43,14 @@ export class UserService {
     );
   }
 
+  public registerUser(data: any) {
+    return this.globalService.post(Constant.Endpoints.USER.REGISTER, data).pipe(
+      map(res => {
+        return res;
+      })
+    );
+  }
+
   public updateUser(data: any) {
     return this.globalService
       .put(Constant.Endpoints.USER.BASE + "/" + data.id, data)

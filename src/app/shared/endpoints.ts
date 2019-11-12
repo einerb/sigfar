@@ -21,6 +21,7 @@ export const Endpoint = {
     BASE: environment.api.base + "inventories"
   },
   USER: {
-    BASE: environment.api.base + "users"
+    BASE: environment.api.base + "users",
+    REGISTER: environment.api.base + "auth/signup"
   }
 };

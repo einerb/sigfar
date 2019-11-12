@@ -24,7 +24,18 @@
                     class="form-control"
                     placeholder="Digite nombres"
                     autofocus
+                    [ngClass]="{
+                      'is-invalid': submitted && f.name.errors
+                    }"
                   />
+                  <span
+                    *ngIf="submitted && f.name.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.name.invalid" class="alert alert-danger">
+                      Los nombres son requeridos
+                    </div>
+                  </span>
                 </div>
               </div>
               <div class="form-group">
@@ -42,8 +53,18 @@
                     formControlName="lastname"
                     class="form-control"
                     placeholder="Digite apellidos"
-                    autofocus
+                    [ngClass]="{
+                      'is-invalid': submitted && f.lastname.errors
+                    }"
                   />
+                  <span
+                    *ngIf="submitted && f.lastname.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.lastname.invalid" class="alert alert-danger">
+                      Los apellidos son requeridos
+                    </div>
+                  </span>
                 </div>
               </div>
               <div class="form-group">
@@ -93,7 +114,6 @@
                     [ngClass]="{
                       'is-invalid': submitted && f.password.errors
                     }"
-                    minlength="5"
                   />
                   <div
                     *ngIf="submitted && f.password.errors"
@@ -126,12 +146,22 @@
                     </div>
                   </div>
                   <input
-                    type="number"
+                    type="text"
                     formControlName="phone"
                     class="form-control"
                     placeholder="Digite número de teléfono"
-                    autofocus
+                    [ngClass]="{
+                      'is-invalid': submitted && f.phone.errors
+                    }"
                   />
+                  <span
+                    *ngIf="submitted && f.phone.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.phone.invalid" class="alert alert-danger">
+                      El teléfono es requerido
+                    </div>
+                  </span>
                 </div>
               </div>
               <div class="form-group">
@@ -149,8 +179,18 @@
                     formControlName="address"
                     class="form-control"
                     placeholder="Digite dirección"
-                    autofocus
+                    [ngClass]="{
+                      'is-invalid': submitted && f.address.errors
+                    }"
                   />
+                  <span
+                    *ngIf="submitted && f.address.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.address.invalid" class="alert alert-danger">
+                      La dirección es requerida
+                    </div>
+                  </span>
                 </div>
               </div>
               <div class="text-center">
