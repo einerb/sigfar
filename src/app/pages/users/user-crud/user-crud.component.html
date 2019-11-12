@@ -36,9 +36,24 @@
           </div>
         </span>
       </div>
+      <div class="form-group" *ngIf="!visible">
+        <label>Contraseña</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="password"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+        />
+        <span *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.invalid" class="alert alert-danger">
+            La contraseña del usuario es requerida
+          </div>
+        </span>
+      </div>
       <div class="form-group">
         <label>Rol del usuario</label>
-        <select class="form-control" formControlName="role">
+        <select class="form-control" formControlName="role_id">
           <option *ngFor="let rol of roles" value="{{ rol.id }}">{{
             rol.description
           }}</option>
@@ -51,26 +66,12 @@
           class="form-control"
           formControlName="email"
           autocomplete="off"
+          [email]="true"
           [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
         />
         <span *ngIf="submitted && f.email.errors" class="invalid-feedback">
           <div *ngIf="f.email.invalid" class="alert alert-danger">
             El correo es requerido
-          </div>
-        </span>
-      </div>
-      <div class="form-group">
-        <label>Cumpleaños</label>
-        <input
-          type="date"
-          class="form-control"
-          formControlName="birthdate"
-          autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.birthdate.errors }"
-        />
-        <span *ngIf="submitted && f.birthdate.errors" class="invalid-feedback">
-          <div *ngIf="f.birthdate.invalid" class="alert alert-danger">
-            La fecha de cumpleaños es requerido
           </div>
         </span>
       </div>
@@ -81,16 +82,35 @@
           class="form-control"
           formControlName="address"
           autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
         />
+        <span *ngIf="submitted && f.address.errors" class="invalid-feedback">
+          <div *ngIf="f.address.invalid" class="alert alert-danger">
+            La dirección es requerida
+          </div>
+        </span>
       </div>
       <div class="form-group">
         <label>Teléfono</label>
         <input
-          type="number"
+          type="text"
           class="form-control"
           formControlName="phone"
           autocomplete="off"
+          [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
         />
+        <span *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+          <div *ngIf="f.phone.invalid" class="alert alert-danger">
+            El teléfono es requerido
+          </div>
+        </span>
+      </div>
+      <div class="form-group" *ngIf="visible">
+        Estado:
+        <mat-slide-toggle
+          class="ml-5"
+          formControlName="status"
+        ></mat-slide-toggle>
       </div>
       <div class="mt-5 d-flex justify-content-center">
         <button type="submit" class="btn btn-success mr-1">

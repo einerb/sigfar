@@ -11,6 +11,7 @@ import { NgbModule, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from "ngx-toastr";
 import { registerLocaleData, DecimalPipe } from "@angular/common";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 import { AppComponent } from "./app.component";
 import { AuthGuard } from "./services/guards/auth.guard";
@@ -68,8 +69,7 @@ registerLocaleData(localesCo);
     BrowserModule,
     CommonModule,
     FormsModule,
-    HttpClientModule,
-    HttpClientModule,
+    MatSlideToggleModule,
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,

@@ -23,6 +23,7 @@ export class UserCrudComponent implements OnInit, OnChanges {
   public loading = false;
   public submitted = false;
   public roles: any;
+  public visible = false;
   @Input() id: number;
   @Output() closeCreate: EventEmitter<any> = new EventEmitter<any>();
 
@@ -36,6 +37,12 @@ export class UserCrudComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.allRoles();
+
+    if (this.id) {
+      this.visible = true;
+    } else {
+      this.visible = false;
+    }
   }
 
   get f() {
@@ -60,8 +67,6 @@ export class UserCrudComponent implements OnInit, OnChanges {
   public myPacthValue(resp) {
     this.loading = false;
     this.form.patchValue(resp);
-    const role = this.roles.find(r => r.id === resp.role_id);
-    this.form.get("role").setValue(role);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -81,8 +86,10 @@ export class UserCrudComponent implements OnInit, OnChanges {
     }
 
     if (this.id) {
+      this.visible = true;
       this.updateUser();
     } else {
+      this.visible = false;
       this.createUser();
     }
   }
@@ -94,17 +101,17 @@ export class UserCrudComponent implements OnInit, OnChanges {
   }
 
   private createForm() {
+    const pass = "12345";
     this.form = this.fb.group({
       id: [""],
       name: ["", Validators.required],
       lastname: ["", [Validators.required]],
       email: ["", [Validators.required]],
-      password: ["12345"],
-      role: ["", [Validators.required]],
-      birthdate: ["", [Validators.required]],
-      address: [""],
-      phone: [""],
-      status: [true, Validators.required]
+      password: [pass, [Validators.required]],
+      role_id: ["", [Validators.required]],
+      address: ["", [Validators.required]],
+      phone: ["", [Validators.required]],
+      status: [""]
     });
   }
 
