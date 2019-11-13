@@ -22,7 +22,6 @@ export class ProductCrudComponent implements OnInit, OnChanges {
   public form: FormGroup;
   public loading = false;
   public submitted = false;
-  public roles: any;
   public visible = false;
   @Input() id: number;
   @Output() closeCreate: EventEmitter<any> = new EventEmitter<any>();
@@ -93,7 +92,6 @@ export class ProductCrudComponent implements OnInit, OnChanges {
   }
 
   private createForm() {
-    const medical = false;
     this.form = this.fb.group({
       id: [""],
       name: ["", Validators.required],

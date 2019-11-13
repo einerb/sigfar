@@ -30,16 +30,28 @@ export class PermissionService {
   }
 
   public createPermissiom(data: any) {
-    return this.globalService.post(Constant.Endpoints.PERMISSION.BASE, data).pipe(
-      map(res => {
-        return res;
-      })
-    );
+    return this.globalService
+      .post(Constant.Endpoints.PERMISSION.BASE, data)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
   }
 
   public updatePermissiom(data: any) {
     return this.globalService
       .put(Constant.Endpoints.PERMISSION.BASE + "/" + data.id, data)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
+  public acceptPermissiom(data: any) {
+    return this.globalService
+      .put(Constant.Endpoints.PERMISSION.ACCEPT + "/" + data.id, data)
       .pipe(
         map(res => {
           return res;

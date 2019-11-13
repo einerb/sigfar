@@ -12,7 +12,8 @@ export const Endpoint = {
     BASE: environment.api.base + "products"
   },
   PERMISSION: {
-    BASE: environment.api.base + "permissions"
+    BASE: environment.api.base + "permissions",
+    ACCEPT: environment.api.base + "permissions/accept"
   },
   SCHEDULE: {
     BASE: environment.api.base + "schedules"
