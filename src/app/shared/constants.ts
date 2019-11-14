@@ -22,9 +22,6 @@ export class Constant {
       urlBeforExpelling: "urlBeforExpelling"
     }
   };
-  public static images = {
-    logo: ""
-  };
 
   // Views
   public static VIEWS = {

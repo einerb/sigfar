@@ -13,7 +13,11 @@
           <div>
             <p>
               Registre y administre nuevos usuarios al sistema. Debe tener en
-              cuenta que los tipos de roles válidos son
+              cuenta que los tipos de roles válidos son<b
+                placement="top"
+                ngbTooltip="Total acceso a la plataforma."
+                >Administrador</b
+              >, 
               <b
                 placement="top"
                 ngbTooltip="Solo tiene permitido gestionar los clientes y los insumos."
@@ -46,7 +50,7 @@
         </div>
         <div class="col-6">
           <h1 class="text-muted mt-5 text-center" *ngIf="!showCreate">
-           <i class="mdi mdi-arrow-left"></i> Clic para ver más
+            <i class="mdi mdi-arrow-left"></i> Clic para ver más
           </h1>
           <app-user-crud
             [id]="id"

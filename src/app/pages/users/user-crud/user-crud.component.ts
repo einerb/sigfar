@@ -12,6 +12,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 
 import { UserService } from "src/app/services";
+import { Constant } from "../../../shared/constants";
 
 @Component({
   selector: "app-user-crud",
@@ -24,6 +25,8 @@ export class UserCrudComponent implements OnInit, OnChanges {
   public submitted = false;
   public roles: any;
   public visible = false;
+  public visiblePassword = true;
+  public user;
   @Input() id: number;
   @Output() closeCreate: EventEmitter<any> = new EventEmitter<any>();
 
@@ -36,6 +39,7 @@ export class UserCrudComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.user = Constant.AUTH.getUser();
     this.allRoles();
 
     if (this.id) {
@@ -72,6 +76,7 @@ export class UserCrudComponent implements OnInit, OnChanges {
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes["id"].currentValue) {
       this.loading = true;
+      this.visiblePassword = false;
       this.load();
     } else {
       this.resetForm();
