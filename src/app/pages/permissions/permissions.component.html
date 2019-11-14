@@ -28,7 +28,7 @@
             <ag-grid-angular
               style="height: 55vh;"
               class="ag-theme-bootstrap"
-              [rowData]="permissions"
+              [rowData]="permissionByUser"
               [gridOptions]="gridPermission"
               [overlayLoadingTemplate]="overlayLoadingTemplate"
               *ngIf="user.role_id == 2"

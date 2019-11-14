@@ -12,6 +12,7 @@ import { Constant } from "../../shared/constants";
 })
 export class PermissionsComponent implements OnInit {
   public permissions = [];
+  public permissionByUser = [];
   public user;
   public data: any;
   public overlayLoadingTemplate;
@@ -49,7 +50,7 @@ export class PermissionsComponent implements OnInit {
         },
         {
           headerName: "Fecha final",
-          field: "date_start",
+          field: "date_end",
           cellStyle: { textAlign: "center" }
         },
         {
@@ -80,12 +81,7 @@ export class PermissionsComponent implements OnInit {
     this.user = Constant.AUTH.getUser();
 
     this.allPermissions();
-  }
-
-  public setSelected(row) {
-    this.id = row.data.id;
-    this.showCreate = true;
-    this.data = row.data;
+    this.allPermissionByUser();
   }
 
   private allPermissions() {
@@ -94,13 +90,26 @@ export class PermissionsComponent implements OnInit {
     });
   }
 
+  private allPermissionByUser() {
+    this.permissionService.getByUser(this.user.id).subscribe(res => {
+      this.permissionByUser = res.data;
+    });
+  }
+
   public closeCreate() {
     this.showCreate = false;
     this.allPermissions();
+    this.allPermissionByUser();
   }
 
   public create() {
     this.id = null;
     this.showCreate = !this.showCreate;
+  }
+
+  public setSelected(row) {
+    this.id = row.data.id;
+    this.showCreate = true;
+    this.data = row.data;
   }
 }

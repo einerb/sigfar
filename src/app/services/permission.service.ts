@@ -29,6 +29,16 @@ export class PermissionService {
       );
   }
 
+  public getByUser(id: any) {
+    return this.globalService
+      .get(Constant.Endpoints.PERMISSION.BYUSER + "/" + id)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
   public createPermissiom(data: any) {
     return this.globalService
       .post(Constant.Endpoints.PERMISSION.BASE, data)
@@ -49,9 +59,9 @@ export class PermissionService {
       );
   }
 
-  public acceptPermissiom(data: any) {
+  public acceptDenyPermissiom(data: any) {
     return this.globalService
-      .put(Constant.Endpoints.PERMISSION.ACCEPT + "/" + data.id, data)
+      .put(Constant.Endpoints.PERMISSION.ACCEPTDENY + "/" + data.id, data)
       .pipe(
         map(res => {
           return res;

@@ -46,7 +46,7 @@ export class SchedulesComponent implements OnInit {
         },
         {
           headerName: "Fecha final",
-          field: "date_start",
+          field: "date_end",
           cellStyle: { textAlign: "center" }
         },
         {
@@ -111,6 +111,7 @@ export class SchedulesComponent implements OnInit {
   public closeCreate() {
     this.showCreate = false;
     this.allSchedules();
+    this.allSchedulesByUser();
   }
 
   public create() {

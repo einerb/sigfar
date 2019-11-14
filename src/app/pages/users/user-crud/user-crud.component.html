@@ -54,8 +54,13 @@
       <div class="form-group">
         <label>Rol del usuario</label>
         <select class="form-control" formControlName="role_id">
-          <option *ngFor="let rol of roles" value="{{ rol.id }}">
-            {{ rol.description }}
+          <ng-container *ngFor="let rol of roles">
+            <option value="{{ rol.id }}" *ngIf="user.role_id == 1">
+              {{ rol.description }}
+            </option>
+          </ng-container>
+          <option value="3" *ngIf="user.role_id == 2">
+            Cliente
           </option>
         </select>
       </div>

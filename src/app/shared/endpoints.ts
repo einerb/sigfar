@@ -13,7 +13,9 @@ export const Endpoint = {
   },
   PERMISSION: {
     BASE: environment.api.base + "permissions",
-    ACCEPT: environment.api.base + "permissions/accept"
+    ACCEPTDENY: environment.api.base + "permissions/acceptDeny",
+    DENY: environment.api.base + "permissions/destroy",
+    BYUSER: environment.api.base + "permissions/byUser"
   },
   SCHEDULE: {
     BASE: environment.api.base + "schedules",
@@ -24,6 +26,7 @@ export const Endpoint = {
   },
   USER: {
     BASE: environment.api.base + "users",
-    REGISTER: environment.api.base + "auth/signup"
+    REGISTER: environment.api.base + "auth/signup",
+    BYUSER: environment.api.base + "users/byuser"
   }
 };

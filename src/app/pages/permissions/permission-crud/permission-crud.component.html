@@ -5,8 +5,13 @@
   </div>
   <div class="col-12">
     <h3 class="text-muted">Datos del permiso</h3>
-    <form [formGroup]="form" (ngSubmit)="onSave()" novalidate>
-      <div class="form-group" *ngIf="user.role_id == 2">
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSave()"
+      novalidate
+      *ngIf="user.role_id == 2"
+    >
+      <div class="form-group">
         <label>Tipo de permiso</label>
         <input
           type="text"
@@ -21,15 +26,15 @@
           </div>
         </span>
       </div>
-      <div class="form-group" *ngIf="user.role_id == 2">
+      <div class="form-group">
         <label>Descripción</label>
-        <input
-          type="text"
+        <textarea
           class="form-control"
           formControlName="description"
-          autocomplete="off"
+          rows="10"
+          style="resize: none;"
           [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
-        />
+        ></textarea>
         <span
           *ngIf="submitted && f.description.errors"
           class="invalid-feedback"
@@ -39,52 +44,68 @@
           </div>
         </span>
       </div>
-      <div class="form-group" *ngIf="user.role_id == 2">
-        <label>Fecha inicial</label>
-        <input
-          type="date"
-          class="form-control"
-          formControlName="date_start"
-          autocomplete="off"
-          [ngClass]="{
-            'is-invalid': submitted && f.date_start.errors
-          }"
-        />
-        <span *ngIf="submitted && f.date_start.errors" class="invalid-feedback">
-          <div *ngIf="f.date_start.invalid" class="alert alert-danger">
-            El fecha inicial es requerida
+      <div class="form-group">
+        <label>Fecha</label>
+        <div class="col-12">
+          <my-date-range-picker
+            class="mydpr"
+            [options]="myDateRangePickerOptions"
+            formControlName="dateOfService"
+            [ngClass]="{
+              'is-invalid': submitted && f.dateOfService.errors
+            }"
+            placement="right"
+            ngbTooltip="Click para desplegar calendario"
+          ></my-date-range-picker>
+        </div>
+        <span
+          *ngIf="submitted && f.dateOfService.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.dateOfService.invalid" class="alert alert-danger">
+            El fecha es requerida
           </div>
         </span>
       </div>
-      <div class="form-group" *ngIf="user.role_id == 2">
-        <label>Fecha final</label>
+      <div class="mt-5 d-flex justify-content-center">
+        <button type="submit" class="btn btn-success mr-1">
+          Guardar
+        </button>
+
+        <button
+          class="btn btn-secondary ml-1"
+          style="color: #000"
+          (click)="close()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="acceptDenyPermission()"
+      novalidate
+      *ngIf="user.role_id == 1"
+    >
+      <p class="mt-4 mb-4">
+        Autorice o desautorice las solicitudes de permisos generada por los
+        usuarios tipo <b>Empleado</b>.
+      </p>
+      <div class="form-group">
+        <label>Descripción</label>
         <input
-          type="date"
+          type="text"
           class="form-control"
-          formControlName="date_end"
-          autocomplete="off"
-          [ngClass]="{
-            'is-invalid': submitted && f.date_end.errors
-          }"
+          formControlName="description"
+          value="description"
+          disabled
         />
-        <span *ngIf="submitted && f.date_end.errors" class="invalid-feedback">
-          <div *ngIf="f.date_end.invalid" class="alert alert-danger">
-            El fecha final es requerida
-          </div>
-        </span>
       </div>
-      <div class="form-group" *ngIf="user.role_id == 2">
-        <label>Usuario</label>
-        <select class="form-control" formControlName="user_id">
-          <option *ngFor="let item of users" value="{{ item.id }}"
-            >{{ item.name }} {{ item.lastname }}</option
-          >
-        </select>
-      </div>
-      <div class="form-group" *ngIf="user.role_id == 1">
-        Solicitud:
+      <div class="form-group ">
+        Estado:
         <mat-slide-toggle
-          class="ml-5"
+          class="ml-3"
           formControlName="status"
         ></mat-slide-toggle>
       </div>
@@ -92,7 +113,7 @@
         <button type="submit" class="btn btn-success mr-1">
           Guardar
         </button>
-        
+
         <button
           class="btn btn-secondary ml-1"
           style="color: #000"

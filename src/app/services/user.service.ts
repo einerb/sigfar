@@ -35,6 +35,16 @@ export class UserService {
     );
   }
 
+  public getByUser(id: any): Observable<any> {
+    return this.globalService
+      .get(Constant.Endpoints.USER.BYUSER + "/" + id)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
   public createUser(data: any) {
     return this.globalService.post(Constant.Endpoints.USER.BASE, data).pipe(
       map(res => {

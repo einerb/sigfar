@@ -4,6 +4,7 @@ import { GridOptions } from "ag-grid-community";
 import { RolesComponent } from "src/app/components/roles/roles.component";
 import { StatusComponent } from "../../components/status/status.component";
 import { UserService } from "src/app/services";
+import { Constant } from "../../shared/constants";
 
 @Component({
   selector: "app-users",
@@ -12,7 +13,9 @@ import { UserService } from "src/app/services";
 })
 export class UsersComponent implements OnInit {
   public users = [];
+  public usersByRol = [];
   public data: any;
+  public user;
   public overlayLoadingTemplate;
   public gridUser;
   public id: any;
@@ -70,7 +73,10 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = Constant.AUTH.getUser();
+
     this.allUsers();
+    this.allUsersByRole();
   }
 
   private allUsers() {
@@ -79,9 +85,16 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  private allUsersByRole() {
+    this.userService.getByUser(3).subscribe(res => {
+      this.usersByRol = res.data;
+    });
+  }
+
   public closeCreate() {
     this.showCreate = false;
     this.allUsers();
+    this.allUsersByRole();
   }
 
   public create() {

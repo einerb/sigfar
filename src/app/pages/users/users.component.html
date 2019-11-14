@@ -44,6 +44,17 @@
               [gridOptions]="gridUser"
               [overlayLoadingTemplate]="overlayLoadingTemplate"
               (cellClicked)="setSelected($event)"
+              *ngIf="user.role_id == 1"
+            >
+            </ag-grid-angular>
+            <ag-grid-angular
+              style="height: 55vh;"
+              class="ag-theme-bootstrap"
+              [rowData]="usersByRol"
+              [gridOptions]="gridUser"
+              [overlayLoadingTemplate]="overlayLoadingTemplate"
+              (cellClicked)="setSelected($event)"
+              *ngIf="user.role_id == 2"
             >
             </ag-grid-angular>
           </div>

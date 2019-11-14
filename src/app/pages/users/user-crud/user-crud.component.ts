@@ -161,7 +161,7 @@ export class UserCrudComponent implements OnInit, OnChanges {
   private resetForm() {
     this.form.reset();
     this.form.patchValue({
-      active: true
+      status: true
     });
   }
 }
