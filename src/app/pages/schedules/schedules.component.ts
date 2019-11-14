@@ -12,6 +12,7 @@ import { Constant } from "../../shared/constants";
 })
 export class SchedulesComponent implements OnInit {
   public schedules = [];
+  public schedulesByUser = [];
   public user;
   public data: any;
   public overlayLoadingTemplate;
@@ -86,6 +87,7 @@ export class SchedulesComponent implements OnInit {
     this.user = Constant.AUTH.getUser();
 
     this.allSchedules();
+    this.allSchedulesByUser();
   }
 
   public setSelected(row) {
@@ -97,6 +99,12 @@ export class SchedulesComponent implements OnInit {
   private allSchedules() {
     this.scheduleService.getAll().subscribe(res => {
       this.schedules = res.data;
+    });
+  }
+
+  private allSchedulesByUser() {
+    this.scheduleService.getByUser(this.user.id).subscribe(res => {
+      this.schedulesByUser = res.data;
     });
   }
 

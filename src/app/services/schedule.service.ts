@@ -29,6 +29,16 @@ export class ScheduleService {
       );
   }
 
+  public getByUser(id: any) {
+    return this.globalService
+      .get(Constant.Endpoints.SCHEDULE.BYUSER + "/" + id)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
   public createSchedule(data: any) {
     return this.globalService.post(Constant.Endpoints.SCHEDULE.BASE, data).pipe(
       map(res => {

@@ -16,7 +16,8 @@ export const Endpoint = {
     ACCEPT: environment.api.base + "permissions/accept"
   },
   SCHEDULE: {
-    BASE: environment.api.base + "schedules"
+    BASE: environment.api.base + "schedules",
+    BYUSER: environment.api.base + "schedules/byUser"
   },
   INVENTORY: {
     BASE: environment.api.base + "inventories"
