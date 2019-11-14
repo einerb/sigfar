@@ -36,6 +36,12 @@
         <span class="menu-title">Productos</span>
       </a>
     </li>
+    <li class="nav-item" *ngIf="user.role_id == 3">
+        <a class="nav-link" routerLink="/orders" routerLinkActive="active">
+          <i class="menu-icon mdi mdi-medical-bag"></i>
+          <span class="menu-title">Mis pedidos</span>
+        </a>
+      </li>
     <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
       <a class="nav-link" routerLink="/schedules" routerLinkActive="active">
         <i class="menu-icon mdi mdi-calendar"></i>

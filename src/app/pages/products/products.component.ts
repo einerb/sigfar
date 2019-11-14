@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   public products = [];
   public productsInventary = [];
   public user;
+  public visible = false;
   public data: any;
   public overlayLoadingTemplate;
   public gridProduct;
@@ -91,6 +92,12 @@ export class ProductsComponent implements OnInit {
   private allProductInventary() {
     this.productService.getAllInventary().subscribe(res => {
       this.productsInventary = res.data;
+
+      if (this.productsInventary.length > 0) {
+        this.visible = false;
+      } else {
+        this.visible = true;
+      }
     });
   }
 

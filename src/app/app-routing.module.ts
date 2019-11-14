@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component";
 import { AuthGuard } from "./services/guards/auth.guard";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
+import { OrdersComponent } from "./pages/orders/orders.component";
 import { PermissionsComponent } from "./pages/permissions/permissions.component";
 import { ProductsComponent } from "./pages/products/products.component";
 import { RecoveryComponent } from "./pages/recovery/recovery.component";
@@ -44,6 +45,11 @@ const routes: Routes = [
       {
         path: "products",
         component: ProductsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "orders",
+        component: OrdersComponent,
         canActivate: [AuthGuard]
       },
       {

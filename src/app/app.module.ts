@@ -37,6 +37,7 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { StatusComponent } from "./components/status/status.component";
 import { UserCrudComponent } from "./pages/users/user-crud/user-crud.component";
 import { UsersComponent } from "./pages/users/users.component";
+import { OrdersComponent } from './pages/orders/orders.component';
 
 registerLocaleData(localesCo);
 
@@ -62,7 +63,8 @@ registerLocaleData(localesCo);
     UserCrudComponent,
     UsersComponent,
     ScheduleCrudComponent,
-    PermissionCrudComponent
+    PermissionCrudComponent,
+    OrdersComponent
   ],
   imports: [
     AppRoutingModule,
