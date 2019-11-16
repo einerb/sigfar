@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   public form: FormGroup;
   hoy = new Date();
   public submitted = false;
+  public loading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,6 +48,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
     this.userService.registerUser(this.form.value).subscribe(
       () => {
         this.onSuccess();

@@ -1,0 +1,49 @@
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title text-primary">Inventario</h1>
+      <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb bg-light">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">inventario</li>
+        </ol>
+      </nav>
+      <div class="row">
+        <div class="col-6" style="border-right: 1px dotted gray;">
+          <div>
+            <p>
+              Registre el inventario de todos los productos registrados en el
+              sistema.
+            </p>
+          </div>
+          <div class="mt-5 mb-4">
+            <button class="btn btn-success" (click)="create()">
+              <i class="mdi mdi-plus"></i> Agregar
+            </button>
+          </div>
+          <div class="table-responsive">
+            <ag-grid-angular
+              style="height: 55vh;"
+              class="ag-theme-bootstrap"
+              [rowData]="inventories"
+              [gridOptions]="gridInventory"
+              [overlayLoadingTemplate]="overlayLoadingTemplate"
+              (cellClicked)="setSelected($event)"
+            >
+            </ag-grid-angular>
+          </div>
+        </div>
+        <div class="col-6">
+          <h1 class="text-muted mt-5 text-center" *ngIf="!showCreate">
+            <i class="mdi mdi-arrow-left"></i> Clic para ver más
+          </h1>
+          <app-inventory-crud
+            [id]="id"
+            (closeCreate)="closeCreate()"
+            *ngIf="showCreate"
+          ></app-inventory-crud>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

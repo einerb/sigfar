@@ -9,9 +9,15 @@
           <div class="text-wrapper mb-4">
             <p class="profile-name">{{ user.name }} {{ user.lastname }}</p>
             <div>
-              <small class="designation text-muted" *ngIf="user.role_id == 1">Super Admin</small>
-              <small class="designation text-muted" *ngIf="user.role_id == 2">Empleado</small>
-              <small class="designation text-muted" *ngIf="user.role_id == 3">Cliente</small>
+              <small class="designation text-muted" *ngIf="user.role_id == 1"
+                >Super Admin</small
+              >
+              <small class="designation text-muted" *ngIf="user.role_id == 2"
+                >Empleado</small
+              >
+              <small class="designation text-muted" *ngIf="user.role_id == 3"
+                >Cliente</small
+              >
               <span class="status-indicator online"></span>
             </div>
           </div>
@@ -37,11 +43,11 @@
       </a>
     </li>
     <li class="nav-item" *ngIf="user.role_id == 3">
-        <a class="nav-link" routerLink="/orders" routerLinkActive="active">
-          <i class="menu-icon mdi mdi-medical-bag"></i>
-          <span class="menu-title">Mis pedidos</span>
-        </a>
-      </li>
+      <a class="nav-link" routerLink="/orders" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-medical-bag"></i>
+        <span class="menu-title">Mis pedidos</span>
+      </a>
+    </li>
     <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
       <a class="nav-link" routerLink="/schedules" routerLinkActive="active">
         <i class="menu-icon mdi mdi-calendar"></i>
@@ -54,19 +60,9 @@
         <span class="menu-title">Permisos</span>
       </a>
     </li>
-    <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
-      <a
-        class="nav-link disabled"
-        routerLink="/suppliers"
-        routerLinkActive="active"
-      >
-        <i class="menu-icon mdi mdi-account-supervisor"></i>
-        <span class="menu-title">Proveedores</span>
-      </a>
-    </li>
     <li class="nav-item" *ngIf="user.role_id == 1">
       <a
-        class="nav-link disabled"
+        class="nav-link"
         routerLink="/inventory"
         routerLinkActive="active"
       >

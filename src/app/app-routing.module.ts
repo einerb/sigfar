@@ -14,6 +14,7 @@ import { ReportsComponent } from "./pages/reports/reports.component";
 import { SchedulesComponent } from "./pages/schedules/schedules.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { UsersComponent } from "./pages/users/users.component";
+import { InventoryComponent } from "./pages/inventory/inventory.component";
 
 const routes: Routes = [
   {
@@ -60,6 +61,11 @@ const routes: Routes = [
       {
         path: "permissions",
         component: PermissionsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "inventory",
+        component: InventoryComponent,
         canActivate: [AuthGuard]
       }
     ]
