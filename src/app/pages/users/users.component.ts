@@ -67,7 +67,6 @@ export class UsersComponent implements OnInit {
       "<span class='ag-overlay-loading-center'>Por favor espere mientras cargan los datos</span>";
 
     this.gridUser.onGridReady = () => {
-      self.gridUser.api.sizeColumnsToFit();
       self.gridUser.api.showLoadingOverlay();
     };
   }

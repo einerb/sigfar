@@ -39,7 +39,7 @@ export class PermissionService {
       );
   }
 
-  public createPermissiom(data: any) {
+  public createPermission(data: any) {
     return this.globalService
       .post(Constant.Endpoints.PERMISSION.BASE, data)
       .pipe(
@@ -49,7 +49,7 @@ export class PermissionService {
       );
   }
 
-  public updatePermissiom(data: any) {
+  public updatePermission(data: any) {
     return this.globalService
       .put(Constant.Endpoints.PERMISSION.BASE + "/" + data.id, data)
       .pipe(
@@ -59,7 +59,7 @@ export class PermissionService {
       );
   }
 
-  public acceptDenyPermissiom(data: any) {
+  public acceptDenyPermission(data: any) {
     return this.globalService
       .put(Constant.Endpoints.PERMISSION.ACCEPTDENY + "/" + data.id, data)
       .pipe(

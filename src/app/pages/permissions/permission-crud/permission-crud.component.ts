@@ -77,6 +77,7 @@ export class PermissionCrudComponent implements OnInit, OnChanges {
   public startDate;
   public endDate;
   @Input() id: number;
+  @Input() user_resp: number;
   @Output() closeCreate: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
@@ -111,10 +112,11 @@ export class PermissionCrudComponent implements OnInit, OnChanges {
   public acceptDenyPermission() {
     const data = {
       id: this.id,
+      user_id: this.form.get("user_id").value,
       status: this.form.get("status").value
     };
 
-    this.permissionService.acceptDenyPermissiom(data).subscribe(
+    this.permissionService.acceptDenyPermission(data).subscribe(
       () => {
         this.onSuccess();
         this.close();
@@ -174,7 +176,7 @@ export class PermissionCrudComponent implements OnInit, OnChanges {
       user_id: this.user.id
     };
 
-    this.permissionService.createPermissiom(data).subscribe(
+    this.permissionService.createPermission(data).subscribe(
       () => {
         this.onSuccess();
         this.close();
@@ -203,7 +205,7 @@ export class PermissionCrudComponent implements OnInit, OnChanges {
     Swal.fire({
       type: "error",
       title: err.code,
-      text: err.error.errors
+      text: err.message
     });
   }
 }

@@ -65,7 +65,6 @@ export class ProductsComponent implements OnInit {
       "<span class='ag-overlay-loading-center'>Por favor espere mientras cargan los datos</span>";
 
     this.gridProduct.onGridReady = () => {
-      self.gridProduct.api.sizeColumnsToFit();
       self.gridProduct.api.showLoadingOverlay();
     };
   }

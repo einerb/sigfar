@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
     Swal.fire({
       type: "error",
       title: err.code,
-      text: err.error.errors
+      text: err.message
     });
   }
 }

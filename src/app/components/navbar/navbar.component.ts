@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   public sidebarOpened = false;
   public user: any;
   public visible = true;
+  public exist = false;
 
   toggleOffcanvas() {
     this.sidebarOpened = !this.sidebarOpened;

@@ -78,7 +78,6 @@ export class SchedulesComponent implements OnInit {
       "<span class='ag-overlay-loading-center'>Por favor espere mientras cargan los datos</span>";
 
     this.gridSchedule.onGridReady = () => {
-      self.gridSchedule.api.sizeColumnsToFit();
       self.gridSchedule.api.showLoadingOverlay();
     };
   }

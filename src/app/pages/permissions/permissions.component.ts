@@ -14,6 +14,7 @@ export class PermissionsComponent implements OnInit {
   public permissions = [];
   public permissionByUser = [];
   public user;
+  public user_resp;
   public data: any;
   public overlayLoadingTemplate;
   public gridPermission;
@@ -72,7 +73,6 @@ export class PermissionsComponent implements OnInit {
       "<span class='ag-overlay-loading-center'>Por favor espere mientras cargan los datos</span>";
 
     this.gridPermission.onGridReady = () => {
-      self.gridPermission.api.sizeColumnsToFit();
       self.gridPermission.api.showLoadingOverlay();
     };
   }
@@ -109,6 +109,7 @@ export class PermissionsComponent implements OnInit {
 
   public setSelected(row) {
     this.id = row.data.id;
+    this.user_resp = row.data.user_id;
     this.showCreate = true;
     this.data = row.data;
   }
