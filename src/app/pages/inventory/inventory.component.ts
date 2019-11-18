@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { GridOptions } from "ag-grid-community";
 
 import { ProductService } from "../../services";
-import { StatusComponent } from "../../components/status/status.component";
 
 @Component({
   selector: "app-inventory",
@@ -10,7 +9,7 @@ import { StatusComponent } from "../../components/status/status.component";
   styleUrls: ["./inventory.component.scss"]
 })
 export class InventoryComponent implements OnInit {
-  public inventories = [];
+  public products = [];
   public data: any;
   public overlayLoadingTemplate;
   public gridInventory;
@@ -29,12 +28,16 @@ export class InventoryComponent implements OnInit {
           cellStyle: { textAlign: "center" }
         },
         {
-          headerName: "Fecha inicial",
+          headerName: "Descripción",
+          field: "description"
+        },
+        {
+          headerName: "Fecha ingreso",
           field: "date_start",
           cellStyle: { textAlign: "center" }
         },
         {
-          headerName: "Fecha final",
+          headerName: "Fecha salida",
           field: "date_end",
           cellStyle: { textAlign: "center" }
         },
@@ -46,19 +49,23 @@ export class InventoryComponent implements OnInit {
           cellStyle: { textAlign: "center" }
         },
         {
-          headerName: "Cantidad",
+          headerName: "Cantidad ingreso",
           field: "quantity_end",
           cellStyle: { textAlign: "center" }
         },
         {
-          headerName: "Precio",
-          field: "price_end",
+          headerName: "Cantidad salida",
+          field: "quantity_end",
           cellStyle: { textAlign: "center" }
         },
         {
-          headerName: "Estado",
-          field: "status",
-          cellRendererFramework: StatusComponent,
+          headerName: "Precio base",
+          field: "price_start",
+          cellStyle: { textAlign: "center" }
+        },
+        {
+          headerName: "Precio final",
+          field: "price_end",
           cellStyle: { textAlign: "center" }
         }
       ],
@@ -79,18 +86,18 @@ export class InventoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allInventories();
+    this.allInventoryByProducts();
   }
 
-  private allInventories() {
-    this.inventoryService.getAllInventary().subscribe(res => {
-      this.inventories = res.data;
+  private allInventoryByProducts() {
+    this.inventoryService.getAllByProducts().subscribe(res => {
+      this.products = res.data;
     });
   }
 
   public closeCreate() {
     this.showCreate = false;
-    this.allInventories();
+    this.allInventoryByProducts();
   }
 
   public create() {

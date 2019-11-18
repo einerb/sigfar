@@ -19,14 +19,6 @@ export class ProductService {
     );
   }
 
-  public getAllInventary(): Observable<any> {
-    return this.globalService.get(Constant.Endpoints.INVENTORY.BASE).pipe(
-      map(res => {
-        return res;
-      })
-    );
-  }
-
   public getById(id: any) {
     return this.globalService
       .get(Constant.Endpoints.PRODUCT.BASE + "/" + id)
@@ -48,6 +40,53 @@ export class ProductService {
   public updateProduct(data: any) {
     return this.globalService
       .put(Constant.Endpoints.PRODUCT.BASE + "/" + data.id, data)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
+  // Inventary
+  public getAllInventary(): Observable<any> {
+    return this.globalService.get(Constant.Endpoints.INVENTORY.BASE).pipe(
+      map(res => {
+        return res;
+      })
+    );
+  }
+
+  public getAllByProducts(): Observable<any> {
+    return this.globalService.get(Constant.Endpoints.INVENTORY.BYPRODUCT).pipe(
+      map(res => {
+        return res;
+      })
+    );
+  }
+
+  public getByIdInventory(id: any) {
+    return this.globalService
+      .get(Constant.Endpoints.INVENTORY.BASE + "/" + id)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
+  public createInventory(data: any) {
+    return this.globalService
+      .post(Constant.Endpoints.INVENTORY.BASE, data)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
+  public updateInventory(data: any) {
+    return this.globalService
+      .put(Constant.Endpoints.INVENTORY.BASE + "/" + data.id, data)
       .pipe(
         map(res => {
           return res;

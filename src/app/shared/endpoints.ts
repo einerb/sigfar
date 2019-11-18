@@ -22,7 +22,8 @@ export const Endpoint = {
     BYUSER: environment.api.base + "schedules/byUser"
   },
   INVENTORY: {
-    BASE: environment.api.base + "inventories"
+    BASE: environment.api.base + "inventories",
+    BYPRODUCT: environment.api.base + "inventories/byProducts"
   },
   USER: {
     BASE: environment.api.base + "users",
