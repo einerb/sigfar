@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MyDateRangePickerModule } from "mydaterangepicker";
+import { MyDatePickerModule } from "mydatepicker";
 import { NgModule, LOCALE_ID } from "@angular/core";
 import { NgbModule, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
@@ -39,7 +40,7 @@ import { UserCrudComponent } from "./pages/users/user-crud/user-crud.component";
 import { UsersComponent } from "./pages/users/users.component";
 import { OrdersComponent } from "./pages/orders/orders.component";
 import { InventoryComponent } from "./pages/inventory/inventory.component";
-import { InventoryCrudComponent } from './pages/inventory/inventory-crud/inventory-crud.component';
+import { InventoryCrudComponent } from "./pages/inventory/inventory-crud/inventory-crud.component";
 
 registerLocaleData(localesCo);
 
@@ -79,6 +80,7 @@ registerLocaleData(localesCo);
     HttpClientModule,
     MatSlideToggleModule,
     MyDateRangePickerModule,
+    MyDatePickerModule,
     NgbModule,
     ReactiveFormsModule,
     RouterModule,

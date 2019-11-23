@@ -9,9 +9,11 @@
       <div class="form-group" *ngIf="!visible">
         <label>Usuario</label>
         <select class="form-control" formControlName="user_id">
-          <option *ngFor="let item of users" value="{{ item.id }}"
-            >{{ item.name }} {{ item.lastname }}</option
-          >
+          <ng-container *ngFor="let item of users">
+            <option value="{{ item.id }}" *ngIf="item.role_id != 3"
+              >{{ item.name }} {{ item.lastname }}</option
+            >
+          </ng-container>
         </select>
       </div>
       <div class="form-group">

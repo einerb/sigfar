@@ -23,13 +23,13 @@
       </div>
       <div class="form-group">
         <label>Descripción</label>
-        <input
-          type="text"
-          class="form-control"
+        <textarea
           formControlName="description"
-          autocomplete="off"
+          class="form-control"
+          rows="4"
           [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
-        />
+          style="resize: none;"
+        ></textarea>
         <span
           *ngIf="submitted && f.description.errors"
           class="invalid-feedback"
@@ -61,13 +61,18 @@
       </div>
       <div class="form-group">
         <label>Fecha de expedición</label>
-        <input
-          type="date"
-          class="form-control"
-          formControlName="date_dispatch"
-          autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.date_dispatch.errors }"
-        />
+        <div class="col-12">
+          <my-date-picker
+            class="mydpr"
+            [options]="myDatePickerOptions"
+            formControlName="date_dispatch"
+            [ngClass]="{
+              'is-invalid': submitted && f.date_dispatch.errors
+            }"
+            placement="right"
+            ngbTooltip="Click para desplegar calendario"
+          ></my-date-picker>
+        </div>
         <span
           *ngIf="submitted && f.date_dispatch.errors"
           class="invalid-feedback"
@@ -79,13 +84,18 @@
       </div>
       <div class="form-group">
         <label>Fecha de expiración</label>
-        <input
-          type="date"
-          class="form-control"
-          formControlName="expiration_date"
-          autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.expiration_date.errors }"
-        />
+        <div class="col-12">
+          <my-date-picker
+            class="mydpr"
+            [options]="myDatePickerOptions"
+            formControlName="expiration_date"
+            [ngClass]="{
+              'is-invalid': submitted && f.expiration_date.errors
+            }"
+            placement="right"
+            ngbTooltip="Click para desplegar calendario"
+          ></my-date-picker>
+        </div>
         <span
           *ngIf="submitted && f.expiration_date.errors"
           class="invalid-feedback"
@@ -97,13 +107,17 @@
       </div>
       <div class="form-group">
         <label>Unidad</label>
-        <input
-          type="text"
+        <select
           class="form-control"
           formControlName="unity"
-          autocomplete="off"
           [ngClass]="{ 'is-invalid': submitted && f.unity.errors }"
-        />
+        >
+          <option value="">Seleccione la unidad del producto</option>
+          <option value="mg">mg</option>
+          <option value="g">g</option>
+          <option value="ml">ml</option>
+          ></select
+        >
         <span *ngIf="submitted && f.unity.errors" class="invalid-feedback">
           <div *ngIf="f.unity.invalid" class="alert alert-danger">
             La unidad es requerida
@@ -112,13 +126,23 @@
       </div>
       <div class="form-group">
         <label>Vía administración</label>
-        <input
-          type="text"
+        <select
           class="form-control"
           formControlName="via_administration"
-          autocomplete="off"
           [ngClass]="{ 'is-invalid': submitted && f.via_administration.errors }"
-        />
+        >
+          <option value="">Seleccione vía de administración</option>
+          <option value="oral">Oral</option>
+          <option value="sublingual">Sublingual</option>
+          <option value="inyeccion">Inyección</option>
+          <option value="nasal">Nasal</option>
+          <option value="conjuntival">Conjuntival</option>
+          <option value="vaginal">Vaginal</option>
+          <option value="uretral">Uretral</option>
+          <option value="colon">Colon</option>
+          <option value="vejiga">Vejiga</option>
+          <option value="rectal">Rectal</option>
+        </select>
         <span
           *ngIf="submitted && f.via_administration.errors"
           class="invalid-feedback"
@@ -148,15 +172,27 @@
       </div>
       <div class="form-group">
         <label>Forma farmacéutica</label>
-        <input
-          type="text"
+        <select
           class="form-control"
           formControlName="pharmaceutical_form"
-          autocomplete="off"
           [ngClass]="{
             'is-invalid': submitted && f.pharmaceutical_form.errors
           }"
-        />
+        >
+          <option value="">Seleccione una forma farmacéutica</option>
+          <option value="aerosol">Aerosol</option>
+          <option value="ampolleta">Ampolleta</option>
+          <option value="capsula">Cápsula</option>
+          <option value="crema">Crema</option>
+          <option value="emulsion">Emulsión</option>
+          <option value="espuma">Espuma</option>
+          <option value="gragea">Gragea</option>
+          <option value="ovulos">Óvulo</option>
+          <option value="perla">Perla</option>
+          <option value="gotas">Gotas</option>
+          <option value="suspension">Suspensión</option>
+          <option value="solucion">Solución</option>
+        </select>
         <span
           *ngIf="submitted && f.pharmaceutical_form.errors"
           class="invalid-feedback"
@@ -166,6 +202,29 @@
           </div>
         </span>
       </div>
+      <div *ngIf="!id">
+        <hr />
+        Datos de ingreso *
+        <div class="form-group">
+          <label>Cantidad</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="quantity_start"
+            autocomplete="off"
+          />
+        </div>
+        <div class="form-group">
+          <label>Precio</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="price_start"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
       <div class="form-group" *ngIf="visible">
         Estado:
         <mat-slide-toggle
