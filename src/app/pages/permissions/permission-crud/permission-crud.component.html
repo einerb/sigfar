@@ -13,13 +13,12 @@
     >
       <div class="form-group">
         <label>Tipo de permiso</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="type"
-          autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.type.errors }"
-        />
+        <select class="form-control"
+        formControlName="type">
+        <option value="">Seleccione el tipo de permiso</option>
+        <option value="normal">Normal</option>
+        <option value="urgente">Urgente</option>
+      </select>
         <span *ngIf="submitted && f.type.errors" class="invalid-feedback">
           <div *ngIf="f.type.invalid" class="alert alert-danger">
             El tipo de permiso es requerido

@@ -148,7 +148,7 @@ export class ScheduleCrudComponent implements OnInit, OnChanges {
     this.form = this.fb.group({
       id: [""],
       description: ["", [Validators.required]],
-      dateOfService: ["", [Validators.required]],
+      dateOfService: [""],
       time_start: ["", [Validators.required]],
       time_end: ["", [Validators.required]],
       user_id: ["", [Validators.required]],
@@ -166,7 +166,7 @@ export class ScheduleCrudComponent implements OnInit, OnChanges {
       date_end: this.endDate,
       time_start: this.form.get("time_start").value,
       time_end: this.form.get("time_end").value,
-      user_id: this.user.id
+      user_id: this.form.get("user_id").value
     };
 
     this.scheduleService.createSchedule(data).subscribe(
@@ -187,17 +187,8 @@ export class ScheduleCrudComponent implements OnInit, OnChanges {
   }
 
   private updateSchedule() {
-    this.startDate = this.getFormatted(this.form.value.dateOfService.beginDate);
-    this.endDate = this.getFormatted(this.form.value.dateOfService.endDate);
-
     const data = {
       id: this.id,
-      description: this.form.get("description").value,
-      date_start: this.startDate,
-      date_end: this.endDate,
-      time_start: this.form.get("time_start").value,
-      time_end: this.form.get("time_end").value,
-      user_id: this.user.id,
       status: this.form.get("status").value
     };
 

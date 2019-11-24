@@ -6,7 +6,7 @@
   <div class="col-12">
     <h3 class="text-muted">Horario de usuario</h3>
     <form [formGroup]="form" (ngSubmit)="onSave()" novalidate>
-      <div class="form-group" *ngIf="!visible">
+      <div class="form-group" *ngIf="!id">
         <label>Usuario</label>
         <select class="form-control" formControlName="user_id">
           <ng-container *ngFor="let item of users">
@@ -16,83 +16,93 @@
           </ng-container>
         </select>
       </div>
-      <div class="form-group">
-        <label>Descripción</label>
-        <textarea
-          class="form-control"
-          formControlName="description"
-          rows="5"
-          style="resize: none;"
-          [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
-        ></textarea>
-        <span
-          *ngIf="submitted && f.description.errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f.description.invalid" class="alert alert-danger">
-            La descripción del horario es requerido
-          </div>
-        </span>
-      </div>
-      <div class="form-group">
-        <label>Horario</label>
-        <div class="col-12">
-          <my-date-range-picker
-            class="mydpr"
-            [options]="myDateRangePickerOptions"
-            formControlName="dateOfService"
-            [ngClass]="{
-              'is-invalid': submitted && f.dateOfService.errors
-            }"
-            placement="right"
-            ngbTooltip="Click para desplegar calendario"
-          ></my-date-range-picker>
+      <div *ngIf="!id">
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea
+            class="form-control"
+            formControlName="description"
+            rows="5"
+            style="resize: none;"
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+          ></textarea>
+          <span
+            *ngIf="submitted && f.description.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.description.invalid" class="alert alert-danger">
+              La descripción del horario es requerido
+            </div>
+          </span>
         </div>
-        <span
-          *ngIf="submitted && f.dateOfService.errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f.dateOfService.invalid" class="alert alert-danger">
-            El horario es requerida
+        <div class="form-group">
+          <label>Horario</label>
+          <div class="col-12">
+            <my-date-range-picker
+              class="mydpr"
+              [options]="myDateRangePickerOptions"
+              formControlName="dateOfService"
+              [ngClass]="{
+                'is-invalid': submitted && f.dateOfService.errors
+              }"
+              placement="right"
+              ngbTooltip="Click para desplegar calendario"
+            ></my-date-range-picker>
           </div>
-        </span>
+          <span
+            *ngIf="submitted && f.dateOfService.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.dateOfService.invalid" class="alert alert-danger">
+              El horario es requerida
+            </div>
+          </span>
+        </div>
+        <div class="form-group">
+          <label>Hora inicial</label>
+          <input
+            type="time"
+            class="form-control"
+            formControlName="time_start"
+            autocomplete="off"
+            [ngClass]="{ 'is-invalid': submitted && f.time_start.errors }"
+          />
+          <span
+            *ngIf="submitted && f.time_start.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.time_start.invalid" class="alert alert-danger">
+              La hora inicial es requerida
+            </div>
+          </span>
+        </div>
+        <div class="form-group">
+          <label>Hora final</label>
+          <input
+            type="time"
+            class="form-control"
+            formControlName="time_end"
+            autocomplete="off"
+            [ngClass]="{ 'is-invalid': submitted && f.time_end.errors }"
+          />
+          <span *ngIf="submitted && f.time_end.errors" class="invalid-feedback">
+            <div *ngIf="f.time_end.invalid" class="alert alert-danger">
+              La hora final es requerida
+            </div>
+          </span>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Hora inicial</label>
-        <input
-          type="time"
-          class="form-control"
-          formControlName="time_start"
-          autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.time_start.errors }"
-        />
-        <span *ngIf="submitted && f.time_start.errors" class="invalid-feedback">
-          <div *ngIf="f.time_start.invalid" class="alert alert-danger">
-            La hora inicial es requerida
-          </div>
-        </span>
-      </div>
-      <div class="form-group">
-        <label>Hora final</label>
-        <input
-          type="time"
-          class="form-control"
-          formControlName="time_end"
-          autocomplete="off"
-          [ngClass]="{ 'is-invalid': submitted && f.time_end.errors }"
-        />
-        <span *ngIf="submitted && f.time_end.errors" class="invalid-feedback">
-          <div *ngIf="f.time_end.invalid" class="alert alert-danger">
-            La hora final es requerida
-          </div>
-        </span>
-      </div>
-      <div class="form-group" *ngIf="visible">
-        Estado:
-        <mat-slide-toggle
-          class="ml-5"
-          formControlName="status"
-        ></mat-slide-toggle>
+      <div *ngIf="id">
+        <div class="form-group mt-5">
+          Habilite o desabilite el horario de este usuario
+        </div>
+        <div class="form-group">
+          Estado:
+          <mat-slide-toggle
+            class="ml-5"
+            formControlName="status"
+          ></mat-slide-toggle>
+        </div>
       </div>
       <div class="mt-5 d-flex justify-content-center">
         <button type="submit" class="btn btn-success mr-1">

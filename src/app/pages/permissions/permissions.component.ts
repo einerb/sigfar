@@ -29,11 +29,17 @@ export class PermissionsComponent implements OnInit {
       columnDefs: [
         {
           headerName: "Tipo",
-          field: "type"
+          field: "type",
+          cellRenderer: params => {
+            return params.value.charAt(0).toUpperCase() + params.value.slice(1);
+          }
         },
         {
           headerName: "Descripción",
-          field: "description"
+          field: "description",
+          cellRenderer: params => {
+            return params.value.charAt(0).toUpperCase() + params.value.slice(1);
+          }
         },
         {
           headerName: "Usuario",
