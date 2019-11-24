@@ -9,7 +9,7 @@ import { ProductService } from "../../services";
   styleUrls: ["./inventory.component.scss"]
 })
 export class InventoryComponent implements OnInit {
-  public products = [];
+  public inventories = [];
   public data: any;
   public overlayLoadingTemplate;
   public gridInventory;
@@ -50,7 +50,7 @@ export class InventoryComponent implements OnInit {
         },
         {
           headerName: "Cantidad ingreso",
-          field: "quantity_end",
+          field: "quantity_start",
           cellStyle: { textAlign: "center" }
         },
         {
@@ -91,7 +91,9 @@ export class InventoryComponent implements OnInit {
 
   private allInventoryByProducts() {
     this.inventoryService.getAllByProducts().subscribe(res => {
-      this.products = res.data;
+      this.inventories = res.data;
+      console.log(this.inventories);
+      
     });
   }
 
