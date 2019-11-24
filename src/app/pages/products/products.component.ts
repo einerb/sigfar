@@ -34,7 +34,10 @@ export class ProductsComponent implements OnInit {
         },
         {
           headerName: "Descripción",
-          field: "description"
+          field: "description",
+          cellRenderer: params => {
+            return params.value.charAt(0).toUpperCase() + params.value.slice(1);
+          }
         },
         {
           headerName: "Expedición",

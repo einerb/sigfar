@@ -30,12 +30,18 @@ export class UsersComponent implements OnInit {
         {
           headerName: "Nombre",
           field: "name",
-          cellStyle: { textAlign: "center" }
+          cellStyle: { textAlign: "center" },
+          cellRenderer: params => {
+            return params.value.charAt(0).toUpperCase() + params.value.slice(1);
+          }
         },
         {
           headerName: "Apellidos",
           field: "lastname",
-          cellStyle: { textAlign: "center" }
+          cellStyle: { textAlign: "center" },
+          cellRenderer: params => {
+            return params.value.charAt(0).toUpperCase() + params.value.slice(1);
+          }
         },
         {
           headerName: "Correo electrónico",
