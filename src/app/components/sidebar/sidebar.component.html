@@ -22,10 +22,6 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-success btn-block"(click)="onSaveOrder()" *ngIf="user.role_id == 3">
-          Crear Orden
-          <i class="mdi mdi-plus"></i>
-        </button>
       </div>
     </li>
     <li class="nav-item">
@@ -40,18 +36,6 @@
         <span class="menu-title">Usuarios</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/products" routerLinkActive="active">
-        <i class="menu-icon mdi mdi-medical-bag"></i>
-        <span class="menu-title">Productos</span>
-      </a>
-    </li>
-    <li class="nav-item" *ngIf="user.role_id == 3">
-      <a class="nav-link" routerLink="/orders" routerLinkActive="active">
-        <i class="menu-icon mdi mdi-medical-bag"></i>
-        <span class="menu-title">Mis pedidos</span>
-      </a>
-    </li>
     <li class="nav-item" *ngIf="user.role_id == 1 || user.role_id == 2">
       <a class="nav-link" routerLink="/schedules" routerLinkActive="active">
         <i class="menu-icon mdi mdi-calendar"></i>
@@ -64,13 +48,19 @@
         <span class="menu-title">Permisos</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/products" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-medical-bag"></i>
+        <span class="menu-title">Productos</span>
+      </a>
+    </li>
     <li class="nav-item" *ngIf="user.role_id == 1">
       <a class="nav-link" routerLink="/inventory" routerLinkActive="active">
         <i class="menu-icon mdi mdi-database"></i>
         <span class="menu-title">Kardex</span>
       </a>
     </li>
-    <li class="nav-item" *ngIf="user.role_id == 1">
+    <!-- <li class="nav-item" *ngIf="user.role_id == 1">
       <a
         class="nav-link disabled"
         routerLink="/reports"
@@ -79,7 +69,7 @@
         <i class="menu-icon mdi mdi-chart-areaspline"></i>
         <span class="menu-title">Informes</span>
       </a>
-    </li>
+    </li>-->
     <li class="nav-item">
       <a
         class="nav-link disabled"

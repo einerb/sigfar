@@ -1,7 +1,11 @@
+import Swal from "sweetalert2";
 import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { GridOptions } from "ag-grid-community";
+import { ToastrService } from "ngx-toastr";
 
 import { Constant } from "../../shared/constants";
+import { OrderService } from "src/app/services";
 import { ProductService } from "src/app/services/product.service";
 import { StatusComponent } from "src/app/components/status/status.component";
 
@@ -11,6 +15,7 @@ import { StatusComponent } from "src/app/components/status/status.component";
   styleUrls: ["./products.component.scss"]
 })
 export class ProductsComponent implements OnInit {
+  public form: FormGroup;
   public products = [];
   public productsInventary = [];
   public user;
@@ -20,8 +25,16 @@ export class ProductsComponent implements OnInit {
   public gridProduct;
   public id: any;
   public showCreate = false;
+  public submitted = false;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+    private orderService: OrderService
+  ) {
+    this.createForm();
+
     this.gridProduct = {} as GridOptions;
     const self = this;
 
@@ -79,6 +92,10 @@ export class ProductsComponent implements OnInit {
     this.allProductInventary();
   }
 
+  get f() {
+    return this.form.controls;
+  }
+
   public setSelected(row) {
     this.id = row.data.id;
     this.showCreate = true;
@@ -103,6 +120,39 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  private createForm() {
+    this.form = this.fb.group({
+      id: [""],
+      quantity: [""],
+      price: [""],
+      product_id: [""],
+      status: [""]
+    });
+  }
+
+  public onSaveOrderDetails() {
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    console.log(this.form.value);
+
+    const data = {
+      quantity: this.form.get("quantity").value,
+      price: this.form.get("price").value,
+      product_id: this.form.get("product_id").value
+    };
+
+    this.orderService.createOrderDetail(data).subscribe(
+      () => {
+        this.onSuccess();
+      },
+      err => this.onFailure(err)
+    );
+  }
+
   public closeCreate() {
     this.showCreate = false;
     this.allProducts();
@@ -111,5 +161,19 @@ export class ProductsComponent implements OnInit {
   public create() {
     this.id = null;
     this.showCreate = !this.showCreate;
+  }
+
+  private onSuccess() {
+    this.toastr.success("Producto agregado..", "", {
+      timeOut: 1000
+    });
+  }
+
+  private onFailure(err) {
+    Swal.fire({
+      type: "error",
+      title: err.code,
+      text: err.message
+    });
   }
 }

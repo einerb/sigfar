@@ -15,10 +15,12 @@
               Visualice todos los productos y su estado en el stock.
             </p>
           </div>
-          <div class="mt-5 mb-4">
-            <button class="btn btn-success" (click)="create()">
-              <i class="mdi mdi-plus"></i> Agregar
-            </button>
+          <div class="row mt-5 mb-4">
+            <div class="col-6">
+              <button class="btn btn-success" (click)="create()">
+                <i class="mdi mdi-plus"></i> Agregar
+              </button>
+            </div>
           </div>
           <div class="table-responsive">
             <ag-grid-angular
@@ -70,18 +72,17 @@
             height="200"
             alt=""
           />
-          <h1 class="card-title text-primary">{{ item.product.name }} - {{ item.product.concentration }} {{ item.product.unity }}</h1>
-          <p class="text-muted">{{ item.product.description }}</p>
+          <h1 class="card-title text-primary">
+            {{ item.product.name }} - {{ item.product.concentration
+            }}{{ item.product.unity }}
+          </h1>
+          <p style="font-size: 12px;">{{ item.product.description }}</p>
+          <hr />
           <div class="row">
-            <div class="col-6">
+            <div class="col-12 text-center">
               <h1 class="badge badge-pill badge-primary h4 pr-4 pl-4 pt-1 pb-1">
                 $ {{ item.price_end }}
               </h1>
-            </div>
-            <div class="col-6">
-              <button class="btn btn-outline-success">
-                Pedir <i class="mdi mdi-cart-plus"></i>
-              </button>
             </div>
           </div>
         </div>

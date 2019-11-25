@@ -5,3 +5,4 @@ export * from "./user.service";
 export * from "./permission.service";
 export * from "./product.service";
 export * from "./schedule.service";
+export * from "./order.service";

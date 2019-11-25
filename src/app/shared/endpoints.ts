@@ -29,5 +29,10 @@ export const Endpoint = {
     BASE: environment.api.base + "users",
     REGISTER: environment.api.base + "auth/signup",
     BYUSER: environment.api.base + "users/byuser"
+  },
+  ORDER: {
+    BASE: environment.api.base + "orders",
+    BYUSER: environment.api.base + "orders/byUser",
+    ORDERDETAILS: environment.api.base + "detailsOrder"
   }
 };

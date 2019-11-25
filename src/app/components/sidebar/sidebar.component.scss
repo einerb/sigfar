@@ -1,6 +1,11 @@
 /* Sidebar */
 
 @import "../../../styles";
+a.status{
+cursor: not-allowed;
+pointer-events: none;
+}
+
 .sidebar {
   min-height: calc(100vh - #{$navbar-height});
   background: $sidebar-light-bg;

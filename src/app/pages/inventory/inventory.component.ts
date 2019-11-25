@@ -10,11 +10,8 @@ import { ProductService } from "../../services";
 })
 export class InventoryComponent implements OnInit {
   public inventories = [];
-  public data: any;
   public overlayLoadingTemplate;
   public gridInventory;
-  public id: any;
-  public showCreate = false;
 
   constructor(private inventoryService: ProductService) {
     this.gridInventory = {} as GridOptions;
@@ -29,7 +26,12 @@ export class InventoryComponent implements OnInit {
         },
         {
           headerName: "Descripción",
-          field: "description"
+          valueGetter: function(params) {
+            return params.data.product.description;
+          },
+          cellRenderer: params => {
+            return params.value.charAt(0).toUpperCase() + params.value.slice(1);
+          }
         },
         {
           headerName: "Fecha ingreso",
@@ -45,6 +47,9 @@ export class InventoryComponent implements OnInit {
           headerName: "Producto",
           valueGetter: function(params) {
             return params.data.product.name;
+          },
+          cellRenderer: params => {
+            return params.value.charAt(0).toUpperCase() + params.value.slice(1);
           },
           cellStyle: { textAlign: "center" }
         },
@@ -66,6 +71,11 @@ export class InventoryComponent implements OnInit {
         {
           headerName: "Precio final",
           field: "price_end",
+          cellStyle: { textAlign: "center" }
+        },
+        {
+          headerName: "Existencia",
+          field: "stock",
           cellStyle: { textAlign: "center" }
         }
       ],
@@ -90,26 +100,8 @@ export class InventoryComponent implements OnInit {
   }
 
   private allInventoryByProducts() {
-    this.inventoryService.getAllByProducts().subscribe(res => {
+    this.inventoryService.getAllInventary().subscribe(res => {
       this.inventories = res.data;
-      console.log(this.inventories);
-      
     });
-  }
-
-  public closeCreate() {
-    this.showCreate = false;
-    this.allInventoryByProducts();
-  }
-
-  public create() {
-    this.id = null;
-    this.showCreate = !this.showCreate;
-  }
-
-  public setSelected(row) {
-    this.id = row.data.id;
-    this.showCreate = true;
-    this.data = row.data;
   }
 }
